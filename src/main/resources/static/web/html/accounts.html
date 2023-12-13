@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/icons8-elemento-aire-32.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Lilita+One&display=swap" rel="stylesheet">
+    <title>Baloon Inc</title>
+</head>
+<body class="bg-[#6E4F0E]">
+    <div id="app">
+    <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row space-x-32 items-center p-8 mt-3 mx-3 rounded-t-xl">
+        <div class="flex flex-row w-56">
+        <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+        <h1 class="text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
+        </div>
+        <div>
+        <nav class="flex gap-12">
+            <a class="text-xl text-white font-bold font-lilita gap-3" href="#">My Accounts</a>
+            <a class="text-xl text-white font-bold font-lilita" href="#">My Cards</a>
+            <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
+            <a class="text-xl text-white font-bold font-lilita" href="#">Transactions</a>
+        </nav>
+        </div>
+        <div class="flex flex-row items-center">
+            <a class="text-xl text-white font-bold font-lilita" href="#">Logout</a>
+            <img src="../images/icons8-salida-64.png" alt="logout">
+        </div>
+    </header>
+    <main class="mx-3">
+        <section class="bg-[#000000]">
+            <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png" alt="woman-withcreditcard">
+            <div class="flex p-4 object-fit place-content-center">
+                <h2 class="text-xl text-white font-bold font-lilita">Welcome Back, Melba</h2>
+                <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            </div>
+        </section>
+        <section class="bg-white flex justify-center" >
+        <template v-if="accounts.length" v-for="account of accounts">
+            <a v-bind:href="'../html/account.html?id='+account.id">
+                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5">
+                    <tbody>
+                        <tr>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">Account Number:</td>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
+                        </tr>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">Creation Date:</td>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.creationDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </a>
+        </template>
+        </section>
+    </main>
+    <footer class="mx-3 bg-[#000000] rounded-b-xl p-4">
+        <div class="flex flex-row w-56">
+            <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            <h1 class="text-2xl text-white font-bold font-lilita">Baloon Inc</h1>
+            </div>
+        <h2 class="text-sm text-white font-lilita">Copyright © 2023 Baloon Corporation Group</h2>
+    </footer>
+    </div>
+    <script src="tailwind.config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/accounts.js"></script>
+</body>
+</html>

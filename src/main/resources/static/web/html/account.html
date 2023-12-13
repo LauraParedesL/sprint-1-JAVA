@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/icons8-elemento-aire-32.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Account</title>
+</head>
+
+<body class="bg-[#6E4F0E]">
+    <div id="app">
+        <header
+            class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row space-x-32 items-center p-8 mt-3 mx-3 rounded-t-xl">
+            <div class="flex flex-row w-56">
+                <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+                <h1 class="text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
+            </div>
+            <div>
+                <nav class="flex gap-12">
+                    <a class="text-xl text-white font-bold font-lilita gap-3" href="../html/accounts.html">My Accounts</a>
+                    <a class="text-xl text-white font-bold font-lilita" href="#">My Cards</a>
+                    <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
+                    <a class="text-xl text-white font-bold font-lilita" href="#">Transactions</a>
+                </nav>
+            </div>
+            <div class="flex flex-row items-center">
+                <a class="text-xl text-white font-bold font-lilita" href="#">Logout</a>
+                <img src="../images/icons8-salida-64.png" alt="logout">
+            </div>
+        </header>
+        <main >
+            <div class="flex p-4 object-fit place-content-center bg-[#000000] mx-3">
+                <h2 class="text-xl text-white font-bold font-lilita">Melba's Account</h2>
+                <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            </div>
+        <section class="flex justify-center gap-5 mx-3 bg-white ">
+            <img  class="w-2/5 m-3" src="../images/oink.png" alt="pig">
+        <article class="flex place-items-center">
+        <table class="m-3 h-32">
+            <thead>
+                <tr>
+                    <th class="border-collapse bg-[#000000] p-2 w-36 text-white">TYPE</th>
+                    <th class="border-collapse bg-[#000000] p-2 w-36 text-white">AMOUNT</th>
+                    <th class="border-collapse bg-[#000000] p-2 w-36 text-white">DATE</th>
+                    <th class="border-collapse bg-[#000000] p-2 w-36 text-white">DESCRIPTION</th>
+                </tr>
+            </thead>
+            <template v-if="transactions.length" v-for="transaction of transactions">
+                <tbody>
+                    <tr>
+                        <td v-if="transaction.type == 'CREDIT'" class="border-collapse bg-[#000000] text-center p-1 text-green-500 font-bold">{{transaction.type}}</td>
+                        <td v-if="transaction.type == 'DEBIT'" class="border-collapse bg-[#000000] text-center p-1 text-red-500 font-bold">{{transaction.type}}</td>
+                        <td class="border-collapse bg-[#000000] text-center p-1 text-white font-bold">{{transaction.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD'})}}</td>
+                        <td class="border-collapse bg-[#000000] text-center p-1 text-white font-bold">{{transaction.creationDate}}</td>
+                        <td class="border-collapse bg-[#000000] text-center p-1 text-white font-bold">{{transaction.description}}</td>
+                    </tr>
+                </tbody>
+            </template>
+        </table>
+        </article>
+        </section>
+        </main>
+        <footer class="mx-3 bg-[#000000] rounded-b-xl p-4">
+            <div class="flex flex-row w-56">
+                <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+                <h1 class="text-2xl text-white font-bold font-lilita">Baloon Inc</h1>
+                </div>
+            <h2 class="text-sm text-white font-lilita">Copyright © 2023 Baloon Corporation Group</h2>
+        </footer>
+    </div>
+    <script type="module" src="../js/tailwind.config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/account.js"></script>
+</body>
+
+</html>
