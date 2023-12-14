@@ -38,6 +38,10 @@
                 <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
             </div>
         </section>
+        <div class="flex p-4 my-1 object-fit place-content-center bg-[#E6A51D]">
+            <h2 class=" text-2xl text-white font-bold font-lilita ">Melba's Accounts</h2>
+            <img class="w-8" src="../images/icons8-emoji-de-tarjeta-de-crédito-48.png" alt="Baloon">
+        </div>
         <section class="bg-white flex justify-center" >
         <template v-if="accounts.length" v-for="account of accounts">
             <a v-bind:href="'../html/account.html?id='+account.id">
@@ -58,6 +62,30 @@
                 </table>
             </a>
         </template>
+        </section>
+        <div class="flex p-4 my-1 object-fit place-content-center bg-[#000000]">
+            <h2 class="text-2xl text-white font-bold font-lilita">Melba's Loans</h2>
+            <img class="w-8" src="../images/icons8-emoji-bolsa-de-dinero-48.png" alt="Baloon">
+        </div>
+        <section class="bg-white flex justify-center">
+            <template v-if="loans.length > 0" v-for="loan of loans">
+                    <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5">
+                        <tbody>
+                            <tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Type of Loan:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
+                            </tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Payments:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.payments}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </template>
+            <h3 v-else>You don't have any kind of loans with this bank at this moment</h3>
         </section>
     </main>
     <footer class="mx-3 bg-[#000000] rounded-b-xl p-4">
