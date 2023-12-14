@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Lilita+One&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
-<body class="bg-[#6E4F0E]">
+<body class="bg-[#FFFE91]">
     <div id="app">
     <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row space-x-32 items-center p-8 mt-3 mx-3 rounded-t-xl">
         <div class="flex flex-row w-56">
@@ -19,10 +19,10 @@
         </div>
         <div>
         <nav class="flex gap-12">
+            <a class="text-xl text-white font-bold font-lilita" href="../html/index.html">Home</a>
             <a class="text-xl text-white font-bold font-lilita gap-3" href="#">My Accounts</a>
-            <a class="text-xl text-white font-bold font-lilita" href="#">My Cards</a>
+            <a class="text-xl text-white font-bold font-lilita" href="../html/cards.html">My Cards</a>
             <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
-            <a class="text-xl text-white font-bold font-lilita" href="#">Transactions</a>
         </nav>
         </div>
         <div class="flex flex-row items-center">
@@ -31,17 +31,21 @@
         </div>
     </header>
     <main class="mx-3">
-        <section class="bg-[#000000]">
+        <section class="bg-[#E6A51D]">
             <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png" alt="woman-withcreditcard">
             <div class="flex p-4 object-fit place-content-center">
-                <h2 class="text-xl text-white font-bold font-lilita">Welcome Back, Melba</h2>
+                <h2 class="text-xl text-white font-bold font-['Courier_Prime']">Welcome Back, Melba</h2>
                 <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
             </div>
         </section>
-        <section class="bg-white flex justify-center" >
+        <div class="flex p-4 my- object-fit place-content-center bg-[#000000]">
+            <h2 class=" text-2xl text-white font-bold font-lilita ">Melba's Accounts</h2>
+            <img class="w-8" src="../images/icons8-cuenta-comercial-64.png" alt="Baloon">
+        </div>
+        <section class="bg-[#FFFE91] flex justify-center" >
         <template v-if="accounts.length" v-for="account of accounts">
             <a v-bind:href="'../html/account.html?id='+account.id">
-                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5">
+                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
                     <tbody>
                         <tr>
                             <td class="p-4 text-xl text-white font-bold font-lilita">Account Number:</td>
@@ -59,13 +63,86 @@
             </a>
         </template>
         </section>
+        <div class="flex p-4 my-1 object-fit place-content-center bg-[#000000]">
+            <h2 class="text-2xl text-white font-bold font-lilita">Melba's Loans</h2>
+            <img class="w-8" src="../images/icons8-emoji-bolsa-de-dinero-48.png" alt="Baloon">
+        </div>
+        <section class="bg-[#FFFE91] flex justify-center">
+            <template v-if="loans.length > 0" v-for="loan of loans">
+                    <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
+                        <tbody>
+                            <tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Type of Loan:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
+                            </tr>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">Payments:</td>
+                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.payments}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </template>
+            <h3 v-else>You don't have any kind of loans with this bank at this moment</h3>
+        </section>
     </main>
-    <footer class="mx-3 bg-[#000000] rounded-b-xl p-4">
-        <div class="flex flex-row w-56">
-            <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-            <h1 class="text-2xl text-white font-bold font-lilita">Baloon Inc</h1>
+    <footer class="mx-3 bg-[#E6A51D] p-4">
+        <div>
+            <div class="flex flex-col items-center justify-center">
+                <h3 class="font-semibold text-center text-sm text-black font-lilita">Follow Us</h3>
+                <div class="flex mt-2">
+                    <a href="https://www.facebook.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45" viewBox="0 0 32 32">
+                        <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path>
+                    </svg>
+                    </a>
+                    <a href="https://www.instagram.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="45" viewBox="0 0 32 32">
+                        <path d="M 11.46875 5 C 7.917969 5 5 7.914063 5 11.46875 L 5 20.53125 C 5 24.082031 7.914063 27 11.46875 27 L 20.53125 27 C 24.082031 27 27 24.085938 27 20.53125 L 27 11.46875 C 27 7.917969 24.085938 5 20.53125 5 Z M 11.46875 7 L 20.53125 7 C 23.003906 7 25 8.996094 25 11.46875 L 25 20.53125 C 25 23.003906 23.003906 25 20.53125 25 L 11.46875 25 C 8.996094 25 7 23.003906 7 20.53125 L 7 11.46875 C 7 8.996094 8.996094 7 11.46875 7 Z M 21.90625 9.1875 C 21.402344 9.1875 21 9.589844 21 10.09375 C 21 10.597656 21.402344 11 21.90625 11 C 22.410156 11 22.8125 10.597656 22.8125 10.09375 C 22.8125 9.589844 22.410156 9.1875 21.90625 9.1875 Z M 16 10 C 12.699219 10 10 12.699219 10 16 C 10 19.300781 12.699219 22 16 22 C 19.300781 22 22 19.300781 22 16 C 22 12.699219 19.300781 10 16 10 Z M 16 12 C 18.222656 12 20 13.777344 20 16 C 20 18.222656 18.222656 20 16 20 C 13.777344 20 12 18.222656 12 16 C 12 13.777344 13.777344 12 16 12 Z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 50 50">
+                        <path d="M 11 4 C 7.1456661 4 4 7.1456661 4 11 L 4 39 C 4 42.854334 7.1456661 46 11 46 L 39 46 C 42.854334 46 46 42.854334 46 39 L 46 11 C 46 7.1456661 42.854334 4 39 4 L 11 4 z M 11 6 L 39 6 C 41.773666 6 44 8.2263339 44 11 L 44 39 C 44 41.773666 41.773666 44 39 44 L 11 44 C 8.2263339 44 6 41.773666 6 39 L 6 11 C 6 8.2263339 8.2263339 6 11 6 z M 13.085938 13 L 22.308594 26.103516 L 13 37 L 15.5 37 L 23.4375 27.707031 L 29.976562 37 L 37.914062 37 L 27.789062 22.613281 L 36 13 L 33.5 13 L 26.660156 21.009766 L 21.023438 13 L 13.085938 13 z M 16.914062 15 L 19.978516 15 L 34.085938 35 L 31.021484 35 L 16.914062 15 z"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
-        <h2 class="text-sm text-white font-lilita">Copyright © 2023 Baloon Corporation Group</h2>
+        </div>
+        <div>
+            <ul class="list-none leading-loose">
+                <li class="text-sm text-black font-lilita">About Us</li>
+                <li class="text-sm text-black font-lilita">Contact</li>
+                <li class="text-sm text-black font-lilita">History</li>
+                <li class="text-sm text-black font-lilita">Mision</li>
+            </ul>
+        </div>
+        <div>
+            <ul class="list-none leading-loose">
+                <li class="ftext-sm text-black font-lilita">Products</li>
+                <li class="text-sm text-black font-lilita">Your Account</li>
+                <li class="text-sm text-black font-lilita">Loans</li>
+                <li class="text-sm text-black font-lilita">Type of cards</li>
+            </ul>
+        </div>
+        <div>
+            <ul class="list-none leading-loose">
+                <li class="text-sm text-black font-lilita">Services</li>
+                <li class="text-sm text-black font-lilita">Insurances</li>
+                <li class="text-sm text-black font-lilita">Pymes</li>
+                <li class="text-sm text-black font-lilita">Entrepreneurship</li>
+            </ul>
+        </div>
+   </footer>
+    <footer class="mx-3 bg-[#000000] rounded-b-xl p-4 flex flex-row gap-96 mb-3">
+        <div class="flex flex-row w-56 items-center">
+            <img class="w-8 object-contain" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            <h1 class="text-2xl text-white font-bold font-lilita">Baloon Inc</h1>
+        </div>
+        <h2 class="w-[400px] text-sm text-white font-lilita flex items-center text-center">Copyright © 2023 Baloon Corporation Group</h2>
+        <div class="text-center">
+            <h3 class="text-xl text-white font-bold font-lilita">Laura Paredes</h3>
+            <h4 class="text-sm text-white font-lilita">Cohort 52</h4>
+        </div>
     </footer>
     </div>
     <script src="tailwind.config.js"></script>

@@ -3,7 +3,9 @@ package com.mindhub.homebanking.models;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -15,6 +17,12 @@ public class Client {
     @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
     private List<Account> accounts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
+    private Set<ClientLoan> clientLoans = new HashSet<>();
+    @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
+    private List<Card> cards = new ArrayList<>();
+
+
     public Client() {
     }
 
@@ -22,6 +30,7 @@ public class Client {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
+
     }
 
     public Long getId() {
@@ -56,9 +65,40 @@ public class Client {
         return accounts;
     }
 
+    public Set<ClientLoan> getClientLoans() {
+        return clientLoans;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public void setClientLoans(Set<ClientLoan> clientLoans) {
+        this.clientLoans = clientLoans;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void addClientLoan(ClientLoan clientLoan){
+       clientLoan.setClient(this);
+       this.clientLoans.add(clientLoan);
+    }
+
     public void addAccount(Account account){
         account.setClient(this);
         this.accounts.add(account);
+
+    }
+
+    public void addCard(Card card){
+        card.setClient(this);
+        this.cards.add(card);
     }
 
     @Override

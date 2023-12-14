@@ -6,7 +6,8 @@ let app = createApp({
         return{
             data: [],
             accounts: [],
-            id:1
+            id:1,
+            loans: []
         }
     },
     created(){
@@ -19,6 +20,7 @@ let app = createApp({
             .then(response => { 
                 this.data = response.data
                 this.accounts = this.data.accounts
+                this.loans = response.data.loans
                 console.log(this.data)
                 console.log(this.accounts)
             })
