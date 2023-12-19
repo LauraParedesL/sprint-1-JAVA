@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Lilita+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
 <body class="bg-[#FFFE91]">
@@ -39,52 +39,19 @@
             </div>
         </section>
         <div class="flex p-4 my- object-fit place-content-center bg-[#000000]">
-            <h2 class=" text-2xl text-white font-bold font-lilita ">Melba's Accounts</h2>
+            <h2 class=" text-2xl text-white font-bold font-lilita ">Melba's cards</h2>
             <img class="w-8" src="../images/icons8-cuenta-comercial-64.png" alt="Baloon">
         </div>
-        <section class="bg-[#FFFE91] flex justify-center" >
-        <template v-if="accounts.length" v-for="account of accounts">
-            <a v-bind:href="'../html/account.html?id='+account.id">
-                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
-                    <tbody>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Account Number:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.number}}</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
-                        </tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Creation Date:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.creationDate}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </a>
-        </template>
-        </section>
-        <div class="flex p-4 my-1 object-fit place-content-center bg-[#000000]">
-            <h2 class="text-2xl text-white font-bold font-lilita">Melba's Loans</h2>
-            <img class="w-8" src="../images/icons8-emoji-bolsa-de-dinero-48.png" alt="Baloon">
-        </div>
         <section class="bg-[#FFFE91] flex justify-center">
-            <template v-if="loans.length > 0" v-for="loan of loans">
-                    <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
-                        <tbody>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Type of Loan:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Payments:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.payments}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <template v-if="cards.length > 0" v-for="card of cards">
+                    <div class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl">
+                                <h2 class="text-xl text-white font-bold font-lilita">{{card.cardType}}</h2>
+                                <img src="../images/chip.png" alt="chip">
+                                <h2 class="text-2xl text-white font-bold font-['Michroma']">{{card.number}}</h2>
+                                <h2 class="text-xl text-white font-bold font-lilita">{{card.cardHolder}}</h2>
+                                <p class="text-xl text-white font-bold font-lilita">Expiration</p>
+                                <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                    </div>
             </template>
             <h3 v-else>You don't have any kind of loans with this bank at this moment</h3>
         </section>
@@ -149,6 +116,6 @@
     <script src="tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="../js/accounts.js"></script>
+    <script src="../js/cards.js"></script>
 </body>
 </html>

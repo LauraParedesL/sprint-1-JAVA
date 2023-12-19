@@ -8,7 +8,8 @@ module.exports = {
       'josefin' : ['Josefin-Sans'],
       'lilita' : ['Lilita-One'],
       'courier' : ['Courier-Prime'],
-      'oxygen' : ['Oxygen']
+      'oxygen' : ['Oxygen'],
+      'Michroma' : ['Michroma']
     }
   }
 }
