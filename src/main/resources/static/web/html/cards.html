@@ -40,17 +40,26 @@
         </section>
         <div class="flex p-4 my- object-fit place-content-center bg-[#000000]">
             <h2 class=" text-2xl text-white font-bold font-lilita ">Melba's cards</h2>
-            <img class="w-8" src="../images/icons8-cuenta-comercial-64.png" alt="Baloon">
+            <img class="w-8" src="../images/icons8-emoji-de-tarjeta-de-crédito-48.png" alt="Baloon">
         </div>
         <section class="bg-[#FFFE91] flex justify-center">
             <template v-if="cards.length > 0" v-for="card of cards">
-                    <div class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl">
-                                <h2 class="text-xl text-white font-bold font-lilita">{{card.cardType}}</h2>
-                                <img src="../images/chip.png" alt="chip">
-                                <h2 class="text-2xl text-white font-bold font-['Michroma']">{{card.number}}</h2>
-                                <h2 class="text-xl text-white font-bold font-lilita">{{card.cardHolder}}</h2>
-                                <p class="text-xl text-white font-bold font-lilita">Expiration</p>
-                                <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                    <div class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
+                                <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                                <div class="flex pb-2">
+                                    <img class="w-10" src="../images/chip.png" alt="chip">
+                                    <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
+                                </div>
+                                <h2 class="text-2xl text-white font-bold font-['Michroma'] pb-3">{{card.number}}</h2>
+                                <h2 class="text-xl text-white font-bold font-lilita pb-4">{{card.cardHolder}}</h2>
+                                <div class="flex gap-40 ">
+                                <div class="w-28">
+                                    <p class="text-lg text-white italic">Expiration</p>
+                                    <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                </div>
+                                    <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png" alt="mastercard">
+                                </div>
+                                
                     </div>
             </template>
             <h3 v-else>You don't have any kind of loans with this bank at this moment</h3>

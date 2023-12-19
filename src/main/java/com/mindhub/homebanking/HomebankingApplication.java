@@ -2,10 +2,13 @@ package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,6 +26,8 @@ public class HomebankingApplication {
 
 	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
 
+	@Autowired
+	public PasswordEncoder passwordEncoder;
 	@Bean
 	public CommandLineRunner initData (ClientRepository clientRepository,
 									   AccountRepository accountRepository,
@@ -32,8 +37,8 @@ public class HomebankingApplication {
 									   CardRepository cardRepository){
 		return args -> {
 
-			Client melba = new Client("Melba" , "Morel" , "melba@mindhub.com");
-			Client nikola = new Client("Nikola" , "Tesla" , "nikolatesla@mindhub.com");
+			Client melba = new Client("MELBA" , "MOREL" , "melba@mindhub.com" , passwordEncoder.encode("000000"));
+			Client nikola = new Client("Nikola" , "Tesla" , "nikolatesla@mindhub.com" , passwordEncoder.encode("111111"));
 			clientRepository.save(melba);
 			clientRepository.save(nikola);
 			System.out.println(melba);
