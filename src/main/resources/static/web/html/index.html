@@ -17,16 +17,22 @@
                 <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
                 <h1 class="text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
             </div>
-            <a href="#" class="flex flex-row items-center w-3/4 justify-end" v-on:click="mostrarModal">
+            <div class="flex flex-row w-3/4 justify-end gap-5">
+            <a href="#" class="flex flex-row items-center hover:bg-black hover:rounded-xl hover:p-1" v-on:click="mostrarModal">
                 <h2 class="text-xl text-white font-bold font-lilita">Log In</h2>
-                <img src="../images/icons8-añadir-usuario-masculino-48.png" alt="logout">
+                <img class="w-10" src="../images/icons8-entrar-64.png" alt="login">
             </a>
+            <a href="#" class="flex flex-row items-center hover:bg-black hover:rounded-xl hover:p-1" v-on:click="mostrarModal2">
+                <h2 class="text-xl text-white font-bold font-lilita">Sign Up</h2>
+                <img class="w-10" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
+            </a>
+        </div>
         </header>
         <main class="mx-3">
             <section class="bg-[#FFFE91]">
                 <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner.png"
                     alt="woman-withcreditcard">
-                <div class="flex p-4 object-fit place-content-center">
+                <div class="flex p-4 object-fit place-content-center my-9">
                     <h2 class="text-xl text-black font-bold font-oxygen">Thinking about you, we have some recommendations</h2>
                 </div>
             </section>
@@ -128,14 +134,29 @@
             <div v-show='modal' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
                 <section class="w-96 h-96 bg-[#FFFE91] absolute rounded-xl">
                     <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal">X</button>
-                    <div class="flex flex-col w-full h-full items-center gap-5 place-content-center">
+                    <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
                         <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
                         <h2 class="text-2xl text-black font-bold font-sans">WELCOME!</h2>
-                        <input class="w-72 p-2 rounded-lg" type="text" id="email" name="email" placeholder="user@example.com">
-                        <input class="w-72 p-2 rounded-lg" type="password" id="password" name="password" placeholder="password">
-                        <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg">Log In</button>
+                        <input class="w-72 p-2 rounded-lg" type="text" id="email" name="email" placeholder="user@example.com" v-model="email">
+                        <input class="w-72 p-2 rounded-lg" type="password" id="password" name="password" placeholder="password" v-model="password">
+                        <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="login()">Log In</button>
                     </div>
-                        
+                     <!--  <h3 v-else>an error has ocurred, try it again</h3> -->
+                </section>
+            </div>
+            <div v-show='modal2' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
+                <section class="w-96 h-3/4 bg-[#FFFE91] absolute rounded-xl">
+                    <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal2">X</button>
+                    <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
+                        <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+                        <h2 class="text-2xl text-black font-bold font-sans">WELCOME!</h2>
+                        <input class="w-72 p-2 rounded-lg" type="text" id="firstName" name="firstName" placeholder="First Name" v-model="name">
+                        <input class="w-72 p-2 rounded-lg" type="lastName" id="lastName" name="lastName" placeholder="Last Name" v-model="lastName">
+                        <input class="w-72 p-2 rounded-lg" type="text" id="emailsg" name="email" placeholder="user@example.com" v-model="email">
+                        <input class="w-72 p-2 rounded-lg" type="password" id="passwordsg" name="password" placeholder="password" v-model="password">
+                        <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="register()">Sign Up</button>
+                    </div>
+                     <!--  <h3 v-else>an error has ocurred, try it again</h3> -->
                 </section>
             </div>
     </div>

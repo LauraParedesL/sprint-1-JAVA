@@ -22,6 +22,7 @@ public class Client {
     @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
     private List<Card> cards = new ArrayList<>();
     private String password;
+    private boolean admin = false;
 
 
     public Client() {
@@ -92,6 +93,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public void addClientLoan(ClientLoan clientLoan){
