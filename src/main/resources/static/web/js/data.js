@@ -38,8 +38,9 @@ let app = createApp({
             .catch(e => console.log(e))
         },
 
-        register(){
-            axios.post("/api/clients?name=" + this.name + "&lastName" + this.lastName + "&email" + this.email + "&password" + this.password)
+        signUp(){
+            axios.post("/api/clients?name=" + this.name + "&lastName=" + this.lastName + "&email=" + this.email
+                         + "&password=" + this.password)
             .then(response => {
                 console.log(response)
                 this.clearData()

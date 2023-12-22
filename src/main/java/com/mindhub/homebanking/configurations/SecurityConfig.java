@@ -21,7 +21,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/web/html/index.html", "/web/images/**", "/web/js/data.js").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/login" , "/api/clients" ).permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/clients/current" , "/web/html/index/**" , "/web/js/**").hasAuthority("CLIENT")
                 .requestMatchers(HttpMethod.GET, "/api/clients/", "/h2-console/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated());

@@ -41,7 +41,7 @@ public class ClientController {
         private PasswordEncoder passwordEncoder;
 
 
-        @RequestMapping(path = "/clients", method = RequestMethod.POST)
+        @PostMapping("")
 
         public ResponseEntity<Object> register(
 
