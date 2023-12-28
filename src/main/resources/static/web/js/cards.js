@@ -8,7 +8,9 @@ let app = createApp({
             accounts: [],
             id:1,
             loans: [],
-            cards: []
+            cards: [],
+            debit: [],
+            credit: []
         }
     },
     created(){
@@ -17,13 +19,19 @@ let app = createApp({
 
     methods : {
         loadData(){
-            axios.get("/api/clients/" +this.id)
+            axios.get("/api/clients/current")
             .then(response => { 
                 this.data = response.data
                 this.cards = this.data.cards
+                this.debit=this.cards.filter(card => card.cardType == 'DEBIT')
+                this.credit=this.cards.filter(card => card.cardType == 'CREDIT')
+                console.log(this.cards)
+                console.log(this.debit)
+                console.log(this.credit)
             })
             .catch(e => console.log(e))
-        }
+        },
+
     }
 
 })

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/icons8-elemento-aire-32.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap" rel="stylesheet">
@@ -154,13 +155,14 @@
                         <input class="w-72 p-2 rounded-lg" type="lastName" id="lastName" name="lastName" placeholder="LastName" v-model="lastName">
                         <input class="w-72 p-2 rounded-lg" type="text" id="emailsg" name="email" placeholder="user@example.com" v-model="email">
                         <input class="w-72 p-2 rounded-lg" type="password" id="passwordsg" name="password" placeholder="password" v-model="password">
-                        <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="signUp()">Sign Up</button>
+                        <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="signUp">Sign Up</button>
+
                     </div>
                      <!--  <h3 v-else>an error has ocurred, try it again</h3> -->
                 </section>
             </div>
     </div>
-    <script src="tailwind.config.js"></script>
+    <script type="module" src="../js/tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../js/data.js"></script>

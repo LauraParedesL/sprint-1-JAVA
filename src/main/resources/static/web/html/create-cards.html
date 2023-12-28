@@ -25,75 +25,31 @@
             <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
         </nav>
         </div>
-        <div @click="logout" class="flex flex-row items-center w-72 justify-end cursor-pointer">
+        <a href="../html/index.html" class="flex flex-row items-center w-72 justify-end">
             <h2 class="text-xl text-white font-bold font-lilita">Logout</h2>
             <img src="../images/icons8-salida-64.png" alt="logout">
-        </div>
+        </a>
     </header>
-    <main class="mx-3">
-        <section class="bg-[#E6A51D]">
-            <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png" alt="woman-withcreditcard">
-            <div class="flex p-4 object-fit place-content-center bg-black">
-                <h2 class="text-xl text-white font-bold font-lilita">Welcome Back</h2>
-                <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-            </div>
-        </section>
-            <div v-if="accounts.length < 3" class="w-full flex justify-center bg-[#E6A51D]">
-            <section class="w-80 h-64  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-8 rounded-2xl m-3 place-content-center">
-                <h3 class="text-white font-['Oxygen'] font-bold text-2xl">Create a new account, click below to start</h3>
+    <main>
+        <section class="w-full flex justify-center">
+            <form class="w-80 h-64  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-3 rounded-2xl m-3 place-content-center" action="">
+                <label class="text-white text-center font-['Oxygen'] font-bold text-xl" for="type">Card Type</label>
+                <select class="p-1 text-[#E1E1E2] rounded-lg" v-model="type" name="type" id="type">
+                    <option value="">select type</option>
+                    <option value="CREDIT">Credit</option>
+                    <option value="DEBIT">Debit</option>
+                </select>
+                <label class="text-white text-center font-['Oxygen'] font-bold text-xl" for="color">Color</label>
+                <select class="p-1 text-[#E1E1E2] rounded-lg" v-model="color" name="color" id="color">
+                    <option value="">select type</option>
+                    <option value="GOLD">Gold</option>
+                    <option value="SILVER">Silver</option>
+                    <option value="TITANIUM">Titanium</option>
+                </select>
                 <div class="w-full flex justify-center">
-                <button class="text-white font-bold w-16 text-lg bg-[#E6A51D] p-1 rounded-xl flex hover:animate-pulse" @click="createAccount">create</button>
+                <button @click.prevent="createCard" class="text-white font-bold w-16 text-lg bg-[#E6A51D] rounded-xl flex hover:animate-pulse justify-center">send</button>
                 </div>
-            </section>
-            </div>
-        <div class="flex p-4 my- object-fit place-content-center bg-[#000000]">
-            <h2 class=" text-xl text-white font-bold font-lilita ">My Accounts</h2>
-        </div>
-        <section class="bg-[#FFFE91] flex justify-center" >
-        <template v-if="accounts.length" v-for="account of accounts">
-            <a v-bind:href="'../html/account.html?id='+account.id">
-                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
-                    <tbody>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Account Number:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.number}}</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
-                        </tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Creation Date:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.creationDate}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </a>
-        </template>
-        </section>
-        <div class="flex p-4 my-1 object-fit place-content-center bg-[#000000]">
-            <h2 class="text-xl text-white font-bold font-lilita">My Loans</h2>
-            <img class="w-8" src="../images/icons8-emoji-bolsa-de-dinero-48.png" alt="Baloon">
-        </div>
-        <section class="bg-[#FFFE91] flex justify-center">
-            <template v-if="loans.length > 0" v-for="loan of loans">
-                    <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
-                        <tbody>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Type of Loan:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Payments:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.payments}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </template>
-            <h3 v-else class="font-['Oxygen'] font-bold text-lg text-white m-7 bg-[#ED1C24] p-2 rounded-xl">You don't have any kind of loans with this bank at this moment</h3>
+            </form>
         </section>
     </main>
     <footer class="mx-3 bg-[#E6A51D] p-4">
@@ -156,6 +112,6 @@
     <script src="../js/tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="../js/accounts.js"></script>
+    <script src="../js/create-cards.js"></script>
 </body>
 </html>

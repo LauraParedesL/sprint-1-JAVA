@@ -9,7 +9,8 @@ let app = createApp({
             name: "",
             lastName : "",
             email : "",
-            password : ""  
+            password : "" ,
+            e : "" 
         }
     },
     
@@ -35,7 +36,15 @@ let app = createApp({
                 console.log(response)
                 window.location.href = "/web/html/accounts.html"
             })
-            .catch(e => console.log(e))
+            .catch(error => 
+                {console.log(error)
+                    Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: 'All fields must to be filled out'
+                  })}
+              )
         },
 
         signUp(){
@@ -43,10 +52,19 @@ let app = createApp({
                          + "&password=" + this.password)
             .then(response => {
                 console.log(response)
-                this.clearData()
+                this.login()
             } )
-            .catch(e => console.log(e))
+            .catch(error => 
+                {
+                    Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: 'All fields must to be filled out'
+                  })}
+              )
         },
+        
 
         clearData(){
             this.email = ""

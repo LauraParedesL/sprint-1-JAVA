@@ -20,10 +20,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/web/html/index.html", "/web/images/**", "/web/js/data.js").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/login" , "/api/clients" ).permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/clients/current" , "/web/html/index/**" , "/web/js/**").hasAuthority("CLIENT")
-                .requestMatchers(HttpMethod.GET, "/api/clients/", "/h2-console/**").hasAuthority("ADMIN")
+                .requestMatchers("/web/html/index.html", "/web/images/**", "/web/js/**", "/web/html/*").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/login" , "/api/clients").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/clients/current/accounts", "/api/clients/current", "/api/clients/current/*" ).hasAuthority("CLIENT")
+                .requestMatchers(HttpMethod.GET, "/api/clients", "/h2-console/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards").hasAuthority("CLIENT")
                 .anyRequest().authenticated());
 
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());

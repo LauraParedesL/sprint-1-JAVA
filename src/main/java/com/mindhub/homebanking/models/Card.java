@@ -13,6 +13,7 @@ public class Card {
     private CardType cardType;
     private String number;
     private int cvv;
+    private String cardHolder;
     private LocalDate fromDate;
     private LocalDate toDate;
     @Enumerated(EnumType.STRING)
@@ -81,6 +82,14 @@ public class Card {
 
     public void setColor(CardColor color) {
         this.color = color;
+    }
+
+    public String getCardHolder() {
+        return cardHolder;
+    }
+
+    public void setCardHolder(String cardHolder) {
+        this.cardHolder = cardHolder;
     }
 
     public Client getClient() {

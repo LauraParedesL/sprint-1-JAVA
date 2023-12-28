@@ -7,7 +7,8 @@ let app = createApp({
             data: [],
             accounts: [],
             id:1,
-            loans: []
+            loans: [],
+            
         }
     },
     created(){
@@ -16,7 +17,7 @@ let app = createApp({
 
     methods : {
         loadData(){
-            axios.get("/api/clients/" +this.id)
+            axios.get("/api/clients/current")
             .then(response => { 
                 this.data = response.data
                 this.accounts = this.data.accounts
@@ -26,17 +27,22 @@ let app = createApp({
             })
             .catch(e => console.log(e))
         },
-    
-        /*
-        addClient(){
-            axios.post("http://localhost:8080/api/clients",{
-                "name": this.name,
-                "lastName": this.lastName,
-                "email": this.email
+        logout(){
+            axios.post("/api/logout")
+            .then(response => { 
+                console.log(response)
+                window.location.href = "/web/html/index.html"
             })
-            .then(response => {this.loadData()})
-            .catch(e => console.log(e))
-        }*/
+            
+        },
+
+        createAccount(){
+            axios.post("/api/clients/current/accounts")
+            .then(response => { 
+                console.log(response)
+            }).catch(e => console.log(e))
+        }
+    
     }
 
 })

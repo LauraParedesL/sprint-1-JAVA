@@ -31,10 +31,6 @@ public class ClientController {
         return new ClientDTO(clientRepository.findById(id).orElse(null)) ;
     }
 
-    @RestController
-
-    public class AppController {
-
 
         @Autowired
 
@@ -51,7 +47,7 @@ public class ClientController {
                 @RequestParam String password) {
 
 
-            if (name.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (name.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
 
                 return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
@@ -80,4 +76,4 @@ public class ClientController {
     }
 
 
-}
+
