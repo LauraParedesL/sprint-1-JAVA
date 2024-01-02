@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/login" , "/api/clients").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/clients/current/accounts", "/api/clients/current", "/api/clients/current/*" ).hasAuthority("CLIENT")
                 .requestMatchers(HttpMethod.GET, "/api/clients", "/h2-console/**").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards").hasAuthority("CLIENT")
+                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards", "/api/transactions").hasAuthority("CLIENT")
                 .anyRequest().authenticated());
 
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());
