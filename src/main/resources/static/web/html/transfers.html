@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/icons8-elemento-aire-32.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap" rel="stylesheet">
@@ -42,19 +43,18 @@
                 <label class="text-white text-center font-['Oxygen'] font-bold text-sm" for="others">Others</label>
                 </div>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="originAccount">Origin Account (mine)</label>
-                <select class="p-1 text-[#000000] rounded-lg" name="originAccount" id="originAccount">
+                <select v-model="originAccount" class="p-1 text-[#000000] rounded-lg" name="originAccount" id="originAccount">
                     <option value="">select type</option>
-                    <option value="VIN001">Gold</option>
-                    <option value="VIN002">Silver</option>
+                    <option v-for="account in accounts" v-bind:value="account.number">{{account.number}} $ {{account.balance}}</option>
                 </select>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="destinationAccount">Destination Account</label>
-                <input class="p-1 text-[#000000] rounded-lg" type="text" id="destinationAccount" name="destinationAccount" placeholder="XXXX-XXXX-XXXX">
+                <input v-model="destinationAccount" class="p-1 text-[#000000] rounded-lg" type="text" id="destinationAccount" name="destinationAccount" placeholder="XXXX-XXXX-XXXX">
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="amount">Amount</label>
-                <input class="p-1 text-[#000000] rounded-lg" type="text" id="amount" name="amount">
+                <input v-model="amount" class="p-1 text-[#000000] rounded-lg" type="text" id="amount" name="amount">
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="description">Description</label>
-                <input class="p-1 text-[#000000] rounded-lg" type="text" id="description" name="description">
+                <input v-model="description" class="p-1 text-[#000000] rounded-lg" type="text" id="description" name="description">
                 <div class="w-full flex justify-center">
-                <button class="text-white font-bold w-20 text-lg bg-[#E6A51D] rounded-xl flex hover:animate-pulse justify-center">Transfer</button>
+                <button @click.prevent="createTransaction"  class="text-white font-bold w-20 text-lg bg-[#E6A51D] rounded-xl flex hover:animate-pulse justify-center">Transfer</button>
                 </div>
             </form>
         </section>

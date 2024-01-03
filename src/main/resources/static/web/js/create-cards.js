@@ -19,7 +19,16 @@ let app = createApp({
             console.log(response))
         .catch(error => 
             console.log(error))
-       }
+       },
+       logout(){
+        axios.post("/api/logout")
+        .then(response => { 
+            console.log(response)
+            window.location.href = "/web/html/index.html"
+        })
+        
+    },
+
     }
 
 })

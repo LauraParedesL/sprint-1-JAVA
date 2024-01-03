@@ -7,7 +7,8 @@ let app = createApp({
             data: [],
             accounts: [],
             id:1,
-            transactions: []
+            transactions: [],
+            account: {}
         }
     },
     created(){
@@ -18,11 +19,12 @@ let app = createApp({
 
     methods : {
         loadData(){
-            axios.get("/api/accounts/" +this.id)
+            axios.get("/api/clients/current")
             .then(response => { 
                 this.data = response.data
                 this.accounts = this.data.accounts
-                this.transactions = this.data.transactions
+                this.account = this.accounts.find(account => account.id == this.id)
+                this.transactions = this.account.transactions
                 console.log(this.data)
                 console.log(this.accounts)
                 console.log(this.transactions)
