@@ -32,7 +32,7 @@
             <img src="../images/icons8-salida-64.png" alt="logout">
         </div>
     </header>
-    <main>
+    <main class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] mx-3">
         <section class="w-full flex justify-center">
             <form class="w-80 h-4/5  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-3 rounded-2xl m-3 place-content-center" action="">
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="type">Account</label>
@@ -45,12 +45,12 @@
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="originAccount">Origin Account (mine)</label>
                 <select v-model="originAccount" class="p-1 text-[#000000] rounded-lg" name="originAccount" id="originAccount">
                     <option value="">select type</option>
-                    <option v-for="account in accounts" v-bind:value="account.number">{{account.number}} $ {{account.balance}}</option>
+                    <option v-for="account in accounts" v-bind:value="account.number" required>{{account.number}} $ {{account.balance}}</option>
                 </select>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="destinationAccount">Destination Account</label>
-                <input v-model="destinationAccount" class="p-1 text-[#000000] rounded-lg" type="text" id="destinationAccount" name="destinationAccount" placeholder="XXXX-XXXX-XXXX">
+                <input v-model="destinationAccount" class="p-1 text-[#000000] rounded-lg" type="text" id="destinationAccount" name="destinationAccount" placeholder="XXXX-XXXX-XXXX" required>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="amount">Amount</label>
-                <input v-model="amount" class="p-1 text-[#000000] rounded-lg" type="text" id="amount" name="amount">
+                <input v-model="amount" class="p-1 text-[#000000] rounded-lg" type="text" id="amount" name="amount" required>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="description">Description</label>
                 <input v-model="description" class="p-1 text-[#000000] rounded-lg" type="text" id="description" name="description">
                 <div class="w-full flex justify-center">

@@ -31,6 +31,14 @@ let app = createApp({
             })
             .catch(e => console.log(e))
         },
+        logout(){
+            axios.post("/api/logout")
+            .then(response => { 
+                console.log(response)
+                window.location.href = "/web/html/index.html"
+            })
+            
+        }
     }
 
 })

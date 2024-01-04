@@ -9,7 +9,8 @@ let app = createApp({
             originAccount: "",
             destinationAccount: "",
             description: "",
-            amount: 0
+            amount: 0,
+            e : ""
            
         }
     },
@@ -36,11 +37,42 @@ let app = createApp({
             
         },
         createTransaction(){
-            axios.post("/api/transactions?amount=" + this.amount + 
-            "&description=" + this.description + 
-            "&originAccount=" + this.originAccount + 
-            "&destinationAccount=" + this.destinationAccount)
             
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Verify that all data is correct!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#E6A51D",
+                cancelButtonColor: "#000000",
+                confirmButtonText: "Yes, transfer!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post("/api/transactions?amount=" + this.amount + 
+                                "&description=" + this.description + 
+                                "&originAccount=" + this.originAccount + 
+                                "&destinationAccount=" + this.destinationAccount)
+                    .then(result => {Swal.fire({
+                            title: "Successfull Transfer!",
+                            text: "",
+                            icon: "success",
+                            confirmButtonColor: "#E6A51D",
+                          }).then((result) => {
+                            if (result.isConfirmed){
+                                window.location.href = "/web/html/accounts.html"
+                            }
+                          })
+                        })
+                    .catch(error => {Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: this.e = error.response.data,
+                        confirmButtonColor: "#E6A51D"
+                      });
+                    console.log(error)
+                    })
+                }
+              })
         }
        
 

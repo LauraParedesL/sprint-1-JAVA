@@ -22,15 +22,16 @@
             <a class="text-xl text-white font-bold font-lilita" href="../html/index.html">Home</a>
             <a class="text-xl text-white font-bold font-lilita gap-3" href="#">My Accounts</a>
             <a class="text-xl text-white font-bold font-lilita" href="../html/cards.html">My Cards</a>
+            <a class="text-xl text-white font-bold font-lilita" href="#">Transfers</a>
             <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
         </nav>
         </div>
-        <a href="../html/index.html" class="flex flex-row items-center w-72 justify-end">
+        <a @click="logout" href="../html/index.html" class="flex flex-row items-center w-32 justify-end">
             <h2 class="text-xl text-white font-bold font-lilita">Logout</h2>
             <img src="../images/icons8-salida-64.png" alt="logout">
         </a>
     </header>
-    <main>
+    <main class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] mx-3">
         <section class="w-full flex justify-center">
             <form class="w-80 h-64  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-3 rounded-2xl m-3 place-content-center" action="">
                 <label class="text-white text-center font-['Oxygen'] font-bold text-xl" for="type">Card Type</label>
