@@ -22,9 +22,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/web/html/index.html", "/web/images/**", "/web/js/**", "/web/html/*").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/login" , "/api/clients").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/clients/current/accounts", "/api/clients/current", "/api/clients/current/*" ).hasAuthority("CLIENT")
+                .requestMatchers( "/api/clients/current/accounts", "/api/clients/current", "/api/clients/current/*", "/api/loans" ).hasAuthority("CLIENT")
                 .requestMatchers(HttpMethod.GET, "/api/clients", "/h2-console/**").hasAuthority("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards", "/api/transactions").hasAuthority("CLIENT")
+                .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards", "/api/transactions", "/api/loans").hasAuthority("CLIENT")
                 .anyRequest().authenticated());
 
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());

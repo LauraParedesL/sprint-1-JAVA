@@ -5,17 +5,20 @@ let app = createApp({
     data(){
         return{
             accounts: [],
-            transactions: [],
-            originAccount: "",
             destinationAccount: "",
-            description: "",
             amount: 0,
-            e : ""
+            e : "",
+            loanId: 0,
+            payments: 0,
+            loans:[],
+            selectedAccount: 0,
+            selectedPayments: 0,
            
         }
     },
     created(){
        this.loadData()
+       this.loadLoans()
     },
 
     methods : {
@@ -36,7 +39,21 @@ let app = createApp({
             })
             
         },
+        loadLoans(){
+            axios.get("/api/loans")
+            .then(response => {
+                this.loans = response.data
+                console.log(this.loans)
+            }).catch(error => error)
+        },
+        findPayments(){
+            const pay = this.loans.find(loan => loan.loanId == this.loanId)
+            this.payments= pay.payments
+            console.log(this.payments)
+        },
+        
         createTransaction(){
+            
             Swal.fire({
                 title: "Are you sure?",
                 text: "Verify that all data is correct!",
@@ -47,10 +64,13 @@ let app = createApp({
                 confirmButtonText: "Yes, transfer!"
               }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.post("/api/transactions?amount=" + this.amount + 
-                                "&description=" + this.description + 
-                                "&originAccount=" + this.originAccount + 
-                                "&destinationAccount=" + this.destinationAccount)
+                    const body = {
+                        "loanId": this.loanId,
+                        "amount" : this.amount,
+                        "payments" : this.selectedPayments,
+                        "number" : this.selectedAccount
+                    }
+                    axios.post("/api/loans", body)
                     .then(result => {Swal.fire({
                             title: "Successfull Transfer!",
                             text: "",

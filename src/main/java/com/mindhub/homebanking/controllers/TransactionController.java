@@ -7,6 +7,7 @@ import com.mindhub.homebanking.models.TransactionType;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.repositories.TransactionRepository;
+import com.mindhub.homebanking.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,8 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/api")
 public class TransactionController {
-
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private TransactionRepository transactionRepository;
+    TransactionService transactionService;
 
     @Transactional
     @PostMapping("/transactions")
@@ -48,9 +43,9 @@ public class TransactionController {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
 
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account accountOrigin = accountRepository.findByNumber(originAccount);
-        Account accountDestination = accountRepository.findByNumber(destinationAccount);
+        Client client = transactionService.getAuthenticatedClient(authentication.getName());
+        Account accountOrigin = transactionService.accountFindByNumber(originAccount);
+        Account accountDestination = transactionService.accountFindByNumber(destinationAccount);
 
 
         if (accountOrigin.equals(accountDestination)){
@@ -78,12 +73,12 @@ public class TransactionController {
 
         accountOrigin.addTransaction(transaction1);
         accountDestination.addTransaction(transaction2);
-        transactionRepository.save(transaction1);
-        transactionRepository.save(transaction2);
+        transactionService.saveTransaction(transaction1);
+        transactionService.saveTransaction(transaction2);
         accountOrigin.setBalance(accountOrigin.getBalance() - amount);
         accountDestination.setBalance(accountDestination.getBalance() + amount);
-        accountRepository.save(accountOrigin);
-        accountRepository.save(accountDestination);
+        transactionService.saveAccounts(accountOrigin);
+        transactionService.saveAccounts(accountDestination);
 
 
 

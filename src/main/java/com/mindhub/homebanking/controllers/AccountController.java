@@ -6,6 +6,7 @@ import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,24 +23,21 @@ import java.util.stream.Collectors;
 public class AccountController {
 
     @Autowired
-    private AccountRepository accountRepository;
+    AccountService accountService;
 
     @RequestMapping("/all")
-    public List<AccountDTO> getAllAccount() {
-        return accountRepository.findAll().stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
+    public List<AccountDTO> getAllAccountDTO() {
+        return accountService.getAllAccountDTO();
     }
    @RequestMapping("{id}")
     public AccountDTO getOneAccount(@PathVariable Long id){
-        return new AccountDTO(accountRepository.findById(id).orElse(null)) ;
+        return accountService.getAccountDTObyId(id);
     }
-
-    @Autowired
-    private ClientRepository clientRepository;
 
     @PostMapping("/clients/current/accounts")
     public ResponseEntity<String> createAccount(Authentication authentication) {
 
-        Client client = clientRepository.findByEmail(authentication.getName());
+        Client client = accountService.getAuthenticatedClient(authentication.getName());
 
         if (client.getAccounts().size() >= 3) {
             return new ResponseEntity<>("You can't have more than 3 accounts with this bank", HttpStatus.FORBIDDEN);
@@ -49,11 +47,11 @@ public class AccountController {
         do {
             number = "VIN-" + getRandomNumber(10000000, 99999999);
 
-        }while(accountRepository.existsByNumber(number));
+        }while(accountService.accountExistsByNumber(number));
 
         Account account = new Account(number, LocalDate.now(), 0D);
         client.addAccount(account);
-        accountRepository.save(account);
+        accountService.accountSave(account);
         return new ResponseEntity<>("Account created successfully", HttpStatus.CREATED);
 
     }

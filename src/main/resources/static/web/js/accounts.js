@@ -42,7 +42,6 @@ let app = createApp({
                 console.log(response)
             }).catch(e => console.log(e))
         }
-    
     }
 
 })
