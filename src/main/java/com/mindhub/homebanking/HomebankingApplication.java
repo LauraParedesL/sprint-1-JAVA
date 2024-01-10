@@ -25,7 +25,7 @@ public class HomebankingApplication {
 	}
 
 	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
-
+/*
 	@Autowired
 	public PasswordEncoder passwordEncoder;
 	@Bean
@@ -35,7 +35,7 @@ public class HomebankingApplication {
 									   LoanRepository loanRepository,
 									   ClientLoanRepository clientLoanRepository,
 									   CardRepository cardRepository){
-		return args -> {
+	/*	return args -> {
 
 			Client melba = new Client("MELBA" , "MOREL" , "melba@mindhub.com" , passwordEncoder.encode("000000"));
 			Client nikola = new Client("Nikola" , "Tesla" , "nikolatesla@mindhub.com" , passwordEncoder.encode("111111"));
@@ -129,5 +129,5 @@ public class HomebankingApplication {
 			cardRepository.save(creditSilver);
 
 		};
-	}
+	}*/
 }
