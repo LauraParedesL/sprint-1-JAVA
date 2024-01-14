@@ -4,19 +4,17 @@ package com.mindhub.homebanking.controllers;
 import com.mindhub.homebanking.dto.AccountDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.utils.AccountUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api")
 
@@ -25,11 +23,11 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @RequestMapping("/all")
+    @GetMapping("/all")
     public List<AccountDTO> getAllAccountDTO() {
         return accountService.getAllAccountDTO();
     }
-   @RequestMapping("{id}")
+    @GetMapping("{id}")
     public AccountDTO getOneAccount(@PathVariable Long id){
         return accountService.getAccountDTObyId(id);
     }
@@ -45,7 +43,7 @@ public class AccountController {
 
         String number;
         do {
-            number = "VIN-" + getRandomNumber(10000000, 99999999);
+            number = AccountUtils.generateAccountNumber();
 
         }while(accountService.accountExistsByNumber(number));
 
@@ -56,7 +54,4 @@ public class AccountController {
 
     }
 
-    public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
 }

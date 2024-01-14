@@ -14,7 +14,7 @@ public class Transaction {
     private TransactionType type;
     private LocalDate creationDate;
     private Double amount;
-    private String description;
+    public String description;
     @ManyToOne
     private Account account;
 

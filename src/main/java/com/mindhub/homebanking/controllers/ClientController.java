@@ -24,12 +24,12 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping("/all")
+    @GetMapping("/all")
     public List<ClientDTO> getAllClientDTO(){
         return clientService.getAllClientDTO();
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public ClientDTO getOneClientDTO(@PathVariable Long id){
         return clientService.getClientDTObyId(id);
     }
@@ -40,11 +40,8 @@ public class ClientController {
         List<AccountDTO> listAccountDTO = accountList.stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
         return listAccountDTO;
     }
-
-
         @Autowired
         private PasswordEncoder passwordEncoder;
-
 
         @PostMapping("")
 

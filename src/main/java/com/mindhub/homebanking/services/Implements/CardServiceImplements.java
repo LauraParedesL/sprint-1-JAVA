@@ -20,7 +20,13 @@ public class CardServiceImplements implements CardService {
     }
 
     @Override
-    public void safeCard(Card card) {
+    public void saveCard(Card card) {
         cardRepository.save(card);
     }
+
+    @Override
+    public Card getCardNumber(String number) {
+        return cardRepository.findByNumber(number);
+    }
+
 }

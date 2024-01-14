@@ -6,5 +6,7 @@ import com.mindhub.homebanking.models.Client;
 public interface CardService {
 
     Client getAuthenticatedClient(String email);
-    void safeCard(Card card);
+    void saveCard(Card card);
+
+    Card getCardNumber(String number);
 }
