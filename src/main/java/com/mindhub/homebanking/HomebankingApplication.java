@@ -23,9 +23,9 @@ public class HomebankingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
-
-	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
 /*
+	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
+
 	@Autowired
 	public PasswordEncoder passwordEncoder;
 	@Bean
@@ -35,7 +35,7 @@ public class HomebankingApplication {
 									   LoanRepository loanRepository,
 									   ClientLoanRepository clientLoanRepository,
 									   CardRepository cardRepository){
-	/*	return args -> {
+		return args -> {
 
 			Client melba = new Client("MELBA" , "MOREL" , "melba@mindhub.com" , passwordEncoder.encode("000000"));
 			Client nikola = new Client("Nikola" , "Tesla" , "nikolatesla@mindhub.com" , passwordEncoder.encode("111111"));
@@ -44,13 +44,13 @@ public class HomebankingApplication {
 			System.out.println(melba);
 			System.out.println(nikola);
 
-			Account VIN001 = new Account("VIN001" , LocalDate.now() , 500.0);
-			Account VIN002 = new Account("VIN002" , LocalDate.now().plusDays(1) , 750.0);
+			Account VIN001 = new Account("VIN001" , LocalDate.now() , 500.0, AccountType.CURRENT);
+			Account VIN002 = new Account("VIN002" , LocalDate.now().plusDays(1) , 750.0, AccountType.SAVINGS);
 			melba.addAccount(VIN001);
 			melba.addAccount(VIN002);
 
-			Account VIN003 = new Account("VIN003" , LocalDate.now() , 6.500);
-			Account VIN004 = new Account("VIN004" , LocalDate.now() , 8.000);
+			Account VIN003 = new Account("VIN003" , LocalDate.now() , 6.500, AccountType.CURRENT);
+			Account VIN004 = new Account("VIN004" , LocalDate.now() , 8.000, AccountType.CURRENT);
 			nikola.addAccount(VIN003);
 			nikola.addAccount(VIN004);
 
@@ -115,10 +115,10 @@ public class HomebankingApplication {
 			clientLoanRepository.save(nikolaSelfLoan);
 			clientLoanRepository.save(nikolasAutomotive);
 
-			Card debitGold = new Card(CardType.DEBIT, "1234-567-890-000", 567, LocalDate.now(), LocalDate.of(2028,12,14), CardColor.GOLD);
-			Card creditTitanium = new Card(CardType.CREDIT, "000-567-890-000", 765, LocalDate.now(), LocalDate.now().plusYears(5), CardColor.TITANIUM);
+			Card debitGold = new Card(CardType.DEBIT, "1234-567-890-000", 567, melba.getName() + melba.getLastName(), LocalDate.now(), LocalDate.of(2028,12,14), CardColor.GOLD);
+			Card creditTitanium = new Card(CardType.CREDIT, "000-567-890-000", 765, melba.getName() + melba.getLastName(), LocalDate.now(), LocalDate.now().plusYears(5), CardColor.TITANIUM);
 
-			Card creditSilver = new Card(CardType.CREDIT, "0000-000-000-000", 543, LocalDate.now(),  LocalDate.now().plusYears(5), CardColor.SILVER);
+			Card creditSilver = new Card(CardType.CREDIT, "0000-000-000-000", 543, nikola.getName() + nikola.getLastName(), LocalDate.now(),  LocalDate.now().plusYears(5), CardColor.SILVER);
 
 			melba.addCard(debitGold);
 			melba.addCard(creditTitanium);

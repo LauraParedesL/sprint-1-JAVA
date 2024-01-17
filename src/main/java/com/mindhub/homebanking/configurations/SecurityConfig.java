@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .requestMatchers( "/api/clients/current/accounts", "/api/clients/current", "/api/clients/current/*", "/api/loans" ).hasAuthority("CLIENT")
                 .requestMatchers(HttpMethod.GET, "/api/clients", "/h2-console/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards", "/api/transactions", "/api/loans").hasAuthority("CLIENT")
+                .requestMatchers(HttpMethod.PATCH, "/api/cards/*", "/api/accounts/*").hasAuthority("CLIENT")
                 .anyRequest().authenticated());
 
         http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());

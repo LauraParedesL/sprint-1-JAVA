@@ -7,6 +7,6 @@ public interface CardService {
 
     Client getAuthenticatedClient(String email);
     void saveCard(Card card);
+    Card foundCardById(Long id);
 
-    Card getCardNumber(String number);
 }

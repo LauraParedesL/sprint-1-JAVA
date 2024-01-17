@@ -10,7 +10,10 @@ let app = createApp({
             loans: [],
             cards: [],
             debit: [],
-            credit: []
+            credit: [],
+            input: false,
+            selectButton: true,
+            card:true
         }
     },
     created(){
@@ -31,6 +34,29 @@ let app = createApp({
             })
             .catch(e => console.log(e))
         },
+        logout(){
+            axios.post("/api/logout")
+            .then(response => { 
+                console.log(response)
+                window.location.href = "/web/html/index.html"
+            })
+            
+        },
+        showInput(){
+            this.input=true
+            this.selectButton=false
+        },
+        deleteCard(){
+            axios.patch("/api/cards/" + this.id)
+            .then(response => { this.card=false
+                console.log(response)
+            }).catch(e => console.log(e))
+        },
+        expiredCard(toDate){
+            const currentDate = new Date()
+            const expirationDate = new Date(toDate)
+            return expirationDate < currentDate
+        }
 
     }
 

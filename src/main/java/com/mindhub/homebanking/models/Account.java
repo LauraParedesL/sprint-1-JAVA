@@ -20,14 +20,17 @@ public class Account {
     private Client client;
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Transaction> transactions = new ArrayList<>();
+    private AccountType accountType;
 
+    private boolean activeAccount = true;
     public Account() {
     }
 
-    public Account(String number, LocalDate creationDate, Double balance) {
+    public Account(String number, LocalDate creationDate, Double balance, AccountType accountType) {
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
+        this.accountType = accountType;
     }
 
     public Long getId() {
@@ -69,6 +72,22 @@ public class Account {
 
     public List<Transaction> getTransactions() {
         return transactions;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
+    public boolean isActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setActiveAccount(boolean activeAccount) {
+        this.activeAccount = activeAccount;
     }
 
     public void addTransaction(Transaction transaction) {

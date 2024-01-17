@@ -15,4 +15,5 @@ public interface AccountService {
     Client getAuthenticatedClient(String email);
     boolean accountExistsByNumber(String number);
     void accountSave(Account account);
+
 }

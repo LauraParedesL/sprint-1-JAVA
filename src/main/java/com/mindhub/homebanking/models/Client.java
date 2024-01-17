@@ -119,6 +119,11 @@ public class Client {
         this.cards.add(card);
     }
 
+    public void removeCard(Card card){
+        card.setClient(this);
+        this.cards.remove(card);
+    }
+
     @Override
     public String toString() {
         return "Client{" +

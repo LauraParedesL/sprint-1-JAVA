@@ -9,7 +9,8 @@ module.exports = {
       'lilita' : ['Lilita-One'],
       'courier' : ['Courier-Prime'],
       'oxygen' : ['Oxygen'],
-      'Michroma' : ['Michroma']
+      'Michroma' : ['Michroma'],
+      'workSans' : ['Work-Sans']
     }
   }
 }

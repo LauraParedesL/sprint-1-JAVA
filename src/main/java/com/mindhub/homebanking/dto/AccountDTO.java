@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.dto;
 
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Client;
 import jakarta.persistence.ManyToOne;
 
@@ -13,6 +14,7 @@ public class AccountDTO {
     private String number;
     private LocalDate creationDate;
     private Double balance;
+    private AccountType accountType;
     private List<TransactionDTO> transactions;
 
     public Long getId() {
@@ -31,6 +33,8 @@ public class AccountDTO {
         return balance;
     }
 
+    public AccountType getAccountType() {return accountType; }
+
     public List<TransactionDTO> getTransactions() {
         return transactions;
     }
@@ -40,6 +44,7 @@ public class AccountDTO {
         number = account.getNumber();
         creationDate = account.getCreationDate();
         balance = account.getBalance();
+        accountType = account.getAccountType();
         transactions = account.getTransactions().stream().map(transaction -> new TransactionDTO(transaction)).collect(Collectors.toList());
 
     }

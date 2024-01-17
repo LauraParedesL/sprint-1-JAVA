@@ -25,8 +25,9 @@
             <div>
                 <nav class="flex gap-12">
                     <a class="text-xl text-white font-bold font-lilita" href="../html/index.html">Home</a>
-                    <a class="text-xl text-white font-bold font-lilita gap-3" href="#">My Accounts</a>
-                    <a class="text-xl text-white font-bold font-lilita" href="../html/cards.html">My Cards</a>
+                    <a class="text-xl text-white font-bold font-lilita gap-3" href="../html/accounts.html">My
+                        Accounts</a>
+                    <a class="text-xl text-white font-bold font-lilita" href="#">My Cards</a>
                     <a class="text-xl text-white font-bold font-lilita" href="../html/transfers.html">Transfers</a>
                     <a class="text-xl text-white font-bold font-lilita" href="#">Loans</a>
                 </nav>
@@ -47,37 +48,47 @@
             </section>
             <div class="flex flex-col p-4 gap-3 object-fit place-content-center bg-[#000000]">
                 <div class="w-full flex justify-center ">
-                <h2 class=" text-2xl text-white font-bold font-lilita ">My cards</h2>
-                <img class="w-8" src="../images/icons8-emoji-de-tarjeta-de-crédito-48.png" alt="Baloon">
-                 </div>
+                    <h2 class=" text-2xl text-white font-bold font-lilita ">My cards</h2>
+                    <img class="w-8" src="../images/icons8-emoji-de-tarjeta-de-crédito-48.png" alt="Baloon">
+                </div>
                 <div v-if="cards.length < 6" class="w-full flex justify-center">
-                    <a href="../html/create-cards.html" class="text-white font-bold w-36 p-1 text-lg bg-[#E6A51D] rounded-xl flex animate-pulse justify-center">Get a new card</a>
+                    <a href="../html/create-cards.html"
+                        class="text-white font-bold w-36 p-1 text-lg bg-[#E6A51D] rounded-xl flex animate-pulse justify-center">Get
+                        a new card</a>
                 </div>
             </div>
             <section class="bg-[#FFFE91] flex flex-wrap justify-center">
-                <h2>DEBIT</h2>
-                <template v-if="debit.length > 0" v-for="card of debit">
-                    <div v-if="card.color == 'GOLD'"
-                        class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
-                        <div class="flex pb-2">
-                            <img class="w-10" src="../images/chip.png" alt="chip">
-                            <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
-                        </div>
-                        <h2 class="text-xl text-white font-bold font-['Michroma'] pb-3">{{card.number}}</h2>
-                        <h2 class="text-xl text-white font-bold font-lilita pb-4">{{card.cardHolder}}</h2>
-                        <div class="flex gap-40 ">
-                            <div class="w-28">
-                                <p class="text-lg text-white italic">Expiration</p>
-                                <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                <template v-if="debit.length > 0" v-for="card of debit" v-show="card">
+                        <div v-if="card.color == 'GOLD'"
+                            class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
+                            <div class="flex w-full space-x-64">
+                                <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                                <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
+                                    v-show="input" @click="deleteCard">
                             </div>
-                            <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
-                                alt="mastercard">
+                            <div class="flex pb-2">
+                                <img class="w-10" src="../images/chip.png" alt="chip">
+                                <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
+                            </div>
+                            <h2 class="text-xl text-white font-bold font-['Michroma'] pb-3">{{card.number}}</h2>
+                            <h2 class="text-xl text-white font-bold font-lilita pb-4">{{card.cardHolder}}</h2>
+                            <div class="flex gap-40 ">
+                                <div class="w-28">
+                                    <p class="text-lg text-white italic">Expiration</p>
+                                    <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                    <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
+                                </div>
+                                <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
+                                    alt="mastercard">
+                            </div>
                         </div>
-                    </div>
                     <div v-if="card.color == 'TITANIUM'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#ff0000e0] via-[#df8080] to-[#ff0000e0] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                        <div class="flex w-full space-x-64">
+                            <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                            <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer  "
+                                v-show="input">
+                        </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
                             <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
@@ -88,6 +99,7 @@
                             <div class="w-28">
                                 <p class="text-lg text-white italic">Expiration</p>
                                 <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
                             </div>
                             <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
                                 alt="mastercard">
@@ -95,7 +107,11 @@
                     </div>
                     <div v-if="card.color == 'SILVER'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000] via-[#E1E1E2] to-[#000000] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                        <div class="flex w-full space-x-64">
+                            <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                            <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer  "
+                                v-show="input">
+                        </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
                             <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
@@ -106,17 +122,21 @@
                             <div class="w-28">
                                 <p class="text-lg text-white italic">Expiration</p>
                                 <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
                             </div>
                             <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
                                 alt="mastercard">
                         </div>
                     </div>
                 </template>
-                <h2>CREDIT</h2>
                 <template v-if="credit.length > 0" v-for="card of credit">
                     <div v-if="card.color == 'GOLD'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                        <div class="flex w-full space-x-64">
+                            <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                            <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
+                                v-show="input" @click="deleteCard">
+                        </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
                             <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
@@ -127,6 +147,7 @@
                             <div class="w-28">
                                 <p class="text-lg text-white italic">Expiration</p>
                                 <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
                             </div>
                             <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
                                 alt="mastercard">
@@ -134,7 +155,11 @@
                     </div>
                     <div v-if="card.color == 'TITANIUM'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000] via-[#E1E1E2] to-[#000000] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                        <div class="flex w-full space-x-64">
+                            <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                            <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
+                                v-show="input">
+                        </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
                             <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
@@ -145,6 +170,7 @@
                             <div class="w-28">
                                 <p class="text-lg text-white italic">Expiration</p>
                                 <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
                             </div>
                             <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
                                 alt="mastercard">
@@ -152,7 +178,11 @@
                     </div>
                     <div v-if="card.color == 'SILVER'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000] via-[#E1E1E2] to-[#000000] rounded-xl m-5 shadow-xl p-2">
-                        <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                        <div class="flex w-full space-x-64">
+                            <h2 class="text-xl text-white font-bold italic">{{card.cardType}}</h2>
+                            <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
+                                v-show="input">
+                        </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
                             <img class="w-10" src="../images/icons8-pago-sin-contacto-24.png" alt="contactless">
@@ -163,13 +193,17 @@
                             <div class="w-28">
                                 <p class="text-lg text-white italic">Expiration</p>
                                 <h2 class="text-xl text-white font-bold font-lilita">{{card.toDate}}</h2>
+                                <p v-if="expiredCard(card.toDate)" class="text-[#FFFFFF] font-bold text-2xl bg-[#ff0000e0] text-center rounded-lg">EXPIRED</p>
                             </div>
                             <img class="w-24 object-contain" src="../images/Visa_Brandmark_White_RGB_2021.png"
                                 alt="mastercard">
                         </div>
                     </div>
                 </template>
-
+                <div class="w-full flex justify-center m-5">
+                    <button class="w-20 text-center text-white font-bold  item-center text-xl bg-[#ED1C24] p-1 rounded-xl  hover:animate-pulse"
+                        @click="showInput" v-show="selectButton">DELETE</button>
+                </div>
             </section>
         </main>
         <footer class="mx-3 bg-[#E6A51D] p-4">

@@ -35,6 +35,4 @@ public class LoanRepositoryTest {
         assertThat(loans, hasItem(hasProperty("name", is("personal credit"))));
     }
 
-
-
 }

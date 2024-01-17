@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/icons8-elemento-aire-32.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
 <body class="bg-[#FFFE91]">
@@ -31,7 +32,7 @@
             <img src="../images/icons8-salida-64.png" alt="logout">
         </div>
     </header>
-    <main class="mx-3">
+    <main class="mx-3 bg-[#000000]">
         <section class="bg-[#E6A51D]">
             <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png" alt="woman-withcreditcard">
             <div class="flex p-4 object-fit place-content-center bg-black">
@@ -40,8 +41,8 @@
             </div>
         </section>
         <div class="flex flex-row">
-            <div v-if="accounts.length < 3" class="w-full flex justify-center bg-[#E6A51D]">
-            <section class="w-80 h-72  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-5 rounded-2xl m-3 place-content-center">
+            <div v-if="accounts.length <= 6" class="w-full flex justify-center bg-[#E6A51D]">
+            <section class="w-80 h-72  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-5 rounded-2xl m-3 place-content-center my-16">
                 <img class="w-20 place-self-center" src="../images/icons8-banco-de-ideas-48.png" alt="pigbank">
                 <h3 class="text-white font-['Oxygen'] text-center font-bold text-2xl">Create a new account, click below to start</h3>
                 <div class="w-full flex justify-center">
@@ -50,7 +51,7 @@
             </section>
             </div>
             <div  class="w-full flex justify-center bg-[#E6A51D]">
-                <section class="w-80 h-72  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-5 rounded-2xl m-3 place-content-center">
+                <section class="w-80 h-72  bg-gradient-to-r from-[#000000]  to-[#221E1F] p-4 flex flex-col gap-5 rounded-2xl m-3 place-content-center my-16">
                     <img class="w-20 place-self-center" src="../images/icons8-loan-96.png" alt="pigbank">
                     <h3 class="text-white text-center font-['Oxygen'] font-bold text-2xl">Looking for the perfect Loan for you?, Click below to start</h3>
                     <div class="w-full flex justify-center">
@@ -62,26 +63,41 @@
         <div class="flex p-4 my- object-fit place-content-center bg-[#000000]">
             <h2 class=" text-xl text-white font-bold font-lilita ">My Accounts</h2>
         </div>
-        <section class="bg-[#FFFE91] flex justify-center" >
+        <section class=" flex justify-center m-10 flex-col" >
+        <div class="flex flex-wrap w-full justify-center">
         <template v-if="accounts.length" v-for="account of accounts">
+            <div class="flex ">
+                <img src="../images/borrar.png" class="w-10 h-10 object-contain flex animate-bounce cursor-pointer"
+                    v-show="input" @click="deleteAccount">
+            </div>
             <a v-bind:href="'../html/account.html?id='+account.id">
-                <table class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
-                    <tbody>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Account Number:</td>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.number}}</td>
+                <table class="place-items-center w-[400px] h- bg-gradient-to-r from-[#000000]  to-[#3C3C3C] rounded-lg m-5 shadow-xl">
+                    <tbody class="flex flex-col">
+                        <tr class="border place-items-center place-content-center  flex flex-col">
+                            <td class="p-4 text-lg text-white font-lilita ">ACCOUNT NUMBER:</td>
+                            <td class="p-4 text-2xl text-white font-bold font-lilita">{{account.number}}</td>
                         </tr>
-                        <tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
+                        <tr class="border border-white">
+                            <td class="p-4 text-xl text-white  font-lilita">Amount:</td>
                             <td class="p-4 text-xl text-white font-bold font-lilita">{{account.balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
                         </tr>
-                            <td class="p-4 text-xl text-white font-bold font-lilita">Creation Date:</td>
+                        <tr class="border border-white">
+                            <td class="p-4 text-xl text-white  font-lilita">Creation Date:</td>
                             <td class="p-4 text-xl text-white font-bold font-lilita">{{account.creationDate}}</td>
+                        </tr>
+                        <tr class="border border-white">
+                            <td class="p-4 text-xl text-white  font-lilita">Account Type:</td>
+                            <td class="p-4 text-xl text-white font-bold font-lilita">{{account.accountType}}</td>
                         </tr>
                     </tbody>
                 </table>
             </a>
         </template>
+        </div>
+        <div class="w-full flex justify-center my-5">
+            <button class="w-20 text-center text-white font-bold  item-center text-xl bg-[#ED1C24] p-1 rounded-xl  hover:animate-pulse"
+                @click="showInput" v-show="selectButton">DELETE</button>
+        </div>
         </section>
         <div class="flex p-4 my-1 object-fit place-content-center bg-[#000000]">
             <h2 class="text-xl text-white font-bold font-lilita">My Loans</h2>

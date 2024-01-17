@@ -20,12 +20,14 @@ public class Card {
     private CardColor color;
     @ManyToOne
     private Client client;
+    private boolean deleteCard = true;
     public Card() {}
 
-    public Card(CardType cardType, String number, int cvv, LocalDate fromDate, LocalDate toDate, CardColor color) {
+    public Card(CardType cardType, String number, int cvv, String cardHolder, LocalDate fromDate, LocalDate toDate, CardColor color) {
         this.cardType = cardType;
         this.number = number;
         this.cvv = cvv;
+        this.cardHolder = cardHolder;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.color = color;
@@ -98,5 +100,13 @@ public class Card {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean isDeleteCard() {
+        return deleteCard;
+    }
+
+    public void setDeleteCard(boolean deleteCard) {
+        this.deleteCard = deleteCard;
     }
 }

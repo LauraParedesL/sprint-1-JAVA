@@ -8,6 +8,8 @@ import com.mindhub.homebanking.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CardServiceImplements implements CardService {
     @Autowired
@@ -25,8 +27,11 @@ public class CardServiceImplements implements CardService {
     }
 
     @Override
-    public Card getCardNumber(String number) {
-        return cardRepository.findByNumber(number);
+    public Card foundCardById(Long id) {
+        return cardRepository.findById(id).orElse(null);
     }
+
+
+
 
 }
