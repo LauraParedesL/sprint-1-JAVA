@@ -13,32 +13,32 @@
 </head>
 <body class="bg-[#FFFE91]">
     <div id="app">
-        <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row space-x-32 items-center p-8 mt-3 mx-3 rounded-t-xl">
-            <div class="flex flex-row w-48">
-                <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-                <h1 class="text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
+        <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row lg:space-x-32 items-center lg:p-8 mt-3 mx-3 pl-3 rounded-t-xl min-h-[10vh]  lg:gap-0 space-x-4">
+            <div class="flex flex-row lg:w-56 gap-2">
+            <img class="w-5 object-contain lg:w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            <h1 class="text-sm lg:text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
             </div>
-            <div class="flex flex-row w-3/4 justify-end gap-5">
-            <a href="#" class="flex flex-row items-center hover:bg-black hover:rounded-xl hover:p-1" v-on:click="mostrarModal">
-                <h2 class="text-xl text-white font-bold font-lilita">Log In</h2>
-                <img class="w-10" src="../images/icons8-entrar-64.png" alt="login">
+            <div class="flex flex-row lg:w-3/4 lg:justify-end lg:gap-5 gap-2">
+            <a href="#" class="flex flex-row bg-[#E6A51D] p-1 rounded-lg items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal">
+                <h2 class="text-sm lg:text-xl text-white font-bold font-lilita">Log In</h2>
+                <img class="w-5 lg:w-10" src="../images/icons8-entrar-64.png" alt="login">
             </a>
-            <a href="#" class="flex flex-row items-center hover:bg-black hover:rounded-xl hover:p-1" v-on:click="mostrarModal2">
-                <h2 class="text-xl text-white font-bold font-lilita">Sign Up</h2>
-                <img class="w-10" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
+            <a href="#" class="flex flex-row bg-[#E6A51D] p-1 rounded-lg items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal2">
+                <h2 class="text-sm lg:text-xl text-white font-bold font-lilita">Sign Up</h2>
+                <img class="w-5 lg:w-10" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
             </a>
-        </div>
+            </div>
         </header>
         <main class="mx-3 bg-gradient-to-r from-[#000000]  to-[#E6A51D]">
             <section>
                 <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner.png"
                     alt="woman-withcreditcard">
-                <div class="flex p-4 object-fit place-content-center my-3">
-                    <h2 class="text-xl text-black font-bold font-oxygen">Thinking about you, we have some recommendations</h2>
+                <div class="flex p-4 object-fit text-center place-content-center my-3">
+                    <h2 class="lg:text-xl text-black font-bold font-oxygen">Thinking about you, we have some recommendations</h2>
                 </div>
             </section>
-            <section class="flex w-full justify-center py-5 ">
-                <article class="w-[420px] bg-[#99D9EA] p-2 m-2 hover:bg-[#0094D1] hover:w-[450px]">
+            <section class="flex flex-col lg:flex-row w-full justify-center py-5 ">
+                <article class="lg:w-[420px] bg-[#99D9EA] p-2 m-2 hover:bg-[#0094D1] hover:w-[450px]">
                     <img class="w-[420px]" src="../images/mama e hijo.png" alt="mom">
                     <p class="font-['Oxygen'] p-1">it's Christmas!</p>
                     <h3 class="text-2xl font-bold font-['Oxygen'] p-1">We'll have special schedule on christmas</h3>
@@ -47,7 +47,7 @@
                         <button class="bg-black text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
-                <article class="w-[420px] bg-[#688126] p-2 m-2 hover:bg-[#25D366] hover:w-[450px]">
+                <article class="lg:w-[420px] bg-[#688126] p-2 m-2 hover:bg-[#25D366] hover:w-[450px]">
                     <img class="w-[420px]" src="../images/de compras.png" alt="mom">
                     <p class="font-['Oxygen'] p-1">You are important for us</p>
                     <h3 class="text-2xl font-bold font-['Oxygen'] p-1">$300 checking bonus on us</h3>
@@ -56,7 +56,7 @@
                         <button class="bg-black text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
-                <article class="w-[420px] bg-[#E27B6D] p-2 m-2 hover:bg-[#FF0000] hover:w-[450px]">
+                <article class="lg:w-[420px] bg-[#E27B6D] p-2 m-2 hover:bg-[#FF0000] hover:w-[450px]">
                     <img class="w-[420px]" src="../images/comiendo pizza.png" alt="mom">
                     <p class="font-['Oxygen'] p-1">our bonus for you!</p>
                     <h3 class="text-2xl font-bold font-['Oxygen'] p-1">Enjoy 0% intro APR for 21 months</h3>
@@ -121,20 +121,20 @@
                     </ul>
                 </div>
             </footer>
-            <footer class="mx-3 bg-[#000000] rounded-b-xl p-4 flex flex-row gap-96 mb-3">
-                <div class="flex flex-row w-56 items-center">
-                    <img class="w-8 object-contain" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-                    <h1 class="text-2xl text-white font-bold font-lilita">Baloon Inc</h1>
+            <footer class="mx-3 bg-[#000000] rounded-b-xl lg:p-4 flex flex-col gap-2 p-1 lg:flex-row lg:gap-96 mb-3 min-h-[20vh]">
+                <div class="flex flex-row lg:w-56 items-center justify-center">
+                    <img class="lg:w-8 w-5 object-contain" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+                    <h1 class="lg:text-2xl text-sm text-white font-bold font-lilita">Baloon Inc</h1>
                 </div>
-                <h2 class="w-[400px] text-sm text-white font-lilita flex items-center text-center">Copyright © 2023
-                    Baloon Corporation Group</h2>
+                <h2 class="lg:w-[400px]  text-sm text-white font-lilita flex items-center text-center">Copyright © 2023 Baloon Corporation Group</h2>
                 <div class="text-center">
-                    <h3 class="text-xl text-white font-bold font-lilita">Laura Paredes</h3>
+                    <h3 class="lg:text-xl text-sm text-white font-bold font-lilita">Laura Paredes</h3>
                     <h4 class="text-sm text-white font-lilita">Cohort 52</h4>
                 </div>
             </footer>
+            </footer>
             <div v-show='modal' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
-                <section class="w-96 h-96 bg-[#FFFE91] absolute rounded-xl">
+                <section class="lg:w-96 lg:h-96 bg-[#FFFE91] absolute rounded-xl p-3 lg:p-0">
                     <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal">X</button>
                     <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
                         <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
@@ -147,7 +147,7 @@
                 </section>
             </div>
             <div v-show='modal2' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
-                <section class="w-96 h-3/4 bg-[#FFFE91] absolute rounded-xl">
+                <section class="lg:w-96 lg:h-3/4 bg-[#FFFE91] absolute rounded-xl p-3 lg:p-0">
                     <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal2">X</button>
                     <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
                         <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">

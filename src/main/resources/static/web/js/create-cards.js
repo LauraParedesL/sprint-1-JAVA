@@ -5,7 +5,8 @@ let app = createApp({
     data(){
         return{
           type : "",
-          color : ""
+          color : "",
+          isMenuOpen: false
         }
     },
     created(){
@@ -28,6 +29,10 @@ let app = createApp({
         })
         
     },
+    ontoggleMenu(){
+        this.isMenuOpen = !this.isMenuOpen
+    }
+
 
     }
 

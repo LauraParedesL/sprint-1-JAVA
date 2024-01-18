@@ -1,15 +1,15 @@
 package com.mindhub.homebanking.controllers;
 
-import com.mindhub.homebanking.models.Card;
-import com.mindhub.homebanking.models.CardColor;
-import com.mindhub.homebanking.models.CardType;
-import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.dto.CardDTO;
+import com.mindhub.homebanking.dto.CardPaymentDTO;
+import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.services.CardService;
 import com.mindhub.homebanking.utils.CardUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -46,6 +46,53 @@ public class CardController {
 
         return new ResponseEntity<>("New card created", HttpStatus.CREATED);
     }
+
+    @Transactional
+    @PostMapping("/cards/payments")
+    public ResponseEntity<Object> cardPayment(
+            @RequestBody CardPaymentDTO cardPaymentDTO,
+                        Authentication authentication){
+
+        Client client = cardService.getAuthenticatedClient(authentication.getName());
+        CardDTO card = cardService.cardDTOFindById(cardPaymentDTO.getCardPaymentId());
+        Account account = cardService.debitAccount(cardPaymentDTO.getNumber());
+
+        if (cardPaymentDTO.getNumber().isBlank()){
+            return new ResponseEntity<>("You need to put a destination number account", HttpStatus.FORBIDDEN);
+        }
+        if (cardPaymentDTO.getCvv() < 100 && cardPaymentDTO.getCvv() > 999){
+            return new ResponseEntity<>("cvv conteins more than 3 digits" ,HttpStatus.FORBIDDEN);
+        }
+        if(card.getCvv() != cardPaymentDTO.getCvv()){
+            return new ResponseEntity<>("The current cvv doesn't match" , HttpStatus.FORBIDDEN);
+        }
+        if(cardPaymentDTO.getAmount() <= 0){
+            return new ResponseEntity<>("The amount has to be greater than 0" , HttpStatus.FORBIDDEN);
+        }
+        if (cardPaymentDTO.getDescription().isBlank()){
+            return new ResponseEntity<>("Please provide a description for the current payment" , HttpStatus.FORBIDDEN);
+        }
+        if(card.getToDate().isBefore(LocalDate.now())){
+            return new ResponseEntity<>("This card is expired, please contact with the bank to get support" , HttpStatus.FORBIDDEN);
+        }
+        if (account.getBalance() < cardPaymentDTO.getAmount()){
+            return new ResponseEntity<>("insufficient founds" , HttpStatus.FORBIDDEN);
+        }
+        //Se debe crear una transacción que indique el débito a una de las cuentas con la descripción de la operación
+
+        Transaction paymentTransaction = new Transaction(TransactionType.DEBIT, LocalDate.now(), cardPaymentDTO.getAmount(), cardPaymentDTO.getDescription());
+        double debitAccount = (account.getBalance() - cardPaymentDTO.getAmount());
+
+        account.setBalance(debitAccount);
+        account.addTransaction(paymentTransaction);
+        cardService.saveTransaction(paymentTransaction);
+    }
+
+
+
+
+
+
 
     @PatchMapping("/cards/{id}")
     public ResponseEntity<String> deleteCard(@PathVariable Long id,

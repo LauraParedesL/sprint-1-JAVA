@@ -76,8 +76,9 @@ public class AccountController {
 
         if (hasThisAccount) {
             account.setActiveAccount(false);
-            accountService.accountSave(account);
-            if (account.getBalance() != 0) {
+
+            if (account.getBalance() == 0) {
+                accountService.accountSave(account);
                 return new ResponseEntity<>("Account deleted successfully", HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("error: an account with balance greater than 0 can't be deleted", HttpStatus.FORBIDDEN);

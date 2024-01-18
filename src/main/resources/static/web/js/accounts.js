@@ -12,7 +12,8 @@ let app = createApp({
             selectButton: true,
             modal: false,
             savings: "",
-            current:""
+            current:"",
+            isMenuOpen: false
             
         }
     },
@@ -54,22 +55,33 @@ let app = createApp({
                 if (result.isConfirmed) {
                     axios.post("/api/clients/current/accounts?accountType=SAVINGS")
                     .then(response => { 
+                        this.loadData()
                         console.log(response)
                     }).catch(e => console.log(e))
                 }else{
                     axios.post("/api/clients/current/accounts?accountType=CURRENT")
                     .then(response => { 
+                        this.loadData()
                     console.log(response)
                     }).catch(e => console.log(e))
 
                 }
               });
         },
-        deleteAccount(){
-            axios.patch("/api/accounts/" + this.id)
-            .then(response => { this.card=false
+        deleteAccount(accountId){
+            axios.patch("/api/accounts/" + accountId)
+            .then(response => 
                 console.log(response)
-            }).catch(e => console.log(e))
+            ).catch(e => console.log(e))
+        },
+        ontoggleMenu(){
+            this.isMenuOpen = !this.isMenuOpen
+        },
+        desktopMenu(){
+            this.isMenuOpen = true
+        },
+        showInput(){
+            this.input=true
         }
     }
 

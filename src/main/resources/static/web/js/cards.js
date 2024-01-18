@@ -13,7 +13,8 @@ let app = createApp({
             credit: [],
             input: false,
             selectButton: true,
-            card:true
+            card:true,
+            isMenuOpen: false
         }
     },
     created(){
@@ -56,6 +57,9 @@ let app = createApp({
             const currentDate = new Date()
             const expirationDate = new Date(toDate)
             return expirationDate < currentDate
+        },
+        ontoggleMenu(){
+            this.isMenuOpen = !this.isMenuOpen
         }
 
     }

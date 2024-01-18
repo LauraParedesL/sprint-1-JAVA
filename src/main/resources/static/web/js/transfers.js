@@ -10,7 +10,8 @@ let app = createApp({
             destinationAccount: "",
             description: "",
             amount: 0,
-            e : ""
+            e : "",
+            isMenuOpen: false
            
         }
     },
@@ -72,6 +73,9 @@ let app = createApp({
                     })
                 }
               })
+        },
+        ontoggleMenu(){
+            this.isMenuOpen = !this.isMenuOpen
         }
        
 

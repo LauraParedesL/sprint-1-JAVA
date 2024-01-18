@@ -1,9 +1,14 @@
 package com.mindhub.homebanking.services.Implements;
 
+import com.mindhub.homebanking.dto.CardDTO;
+import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.models.Transaction;
+import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.repositories.TransactionRepository;
 import com.mindhub.homebanking.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +21,10 @@ public class CardServiceImplements implements CardService {
     private ClientRepository clientRepository;
     @Autowired
     private CardRepository cardRepository;
+    @Autowired
+    private AccountRepository accountRepository;
+    @Autowired
+    private TransactionRepository transactionRepository;
     @Override
     public Client getAuthenticatedClient(String email) {
         return clientRepository.findByEmail(email);
@@ -31,7 +40,20 @@ public class CardServiceImplements implements CardService {
         return cardRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public CardDTO cardDTOFindById(Long id) {
+        return cardRepository.findById(id).map(CardDTO::new).orElse(null);
+    }
 
+    @Override
+    public Account debitAccount(String number) {
+        return accountRepository.findByNumber(number) ;
+    }
+
+    @Override
+    public Transaction saveTransaction(Transaction transaction) {
+        return transactionRepository.save(transaction);
+    }
 
 
 }

@@ -41,7 +41,7 @@ public class LoanController {
             return new ResponseEntity<>("not found", HttpStatus.FORBIDDEN);
         }
         if (loanApplicationDTO.getAmount() <= 0) {
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("The amount can't be 0", HttpStatus.FORBIDDEN);
         }
         if (loanApplicationDTO.getPayments() <= 0) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
