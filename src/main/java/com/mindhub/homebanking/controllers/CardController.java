@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
@@ -24,7 +25,7 @@ public class CardController {
     CardService cardService;
 
     @PostMapping("/clients/current/cards")
-    public ResponseEntity<String> createCard(@RequestParam CardType cardType,
+    public ResponseEntity<Object> createCard(@RequestParam CardType cardType,
                                                 @RequestParam CardColor color,
                                                 Authentication authentication) {
 
@@ -47,24 +48,22 @@ public class CardController {
         return new ResponseEntity<>("New card created", HttpStatus.CREATED);
     }
 
-    @Transactional
+    @CrossOrigin(origins = "*")
     @PostMapping("/cards/payments")
-    public ResponseEntity<Object> cardPayment(
-            @RequestBody CardPaymentDTO cardPaymentDTO,
-                        Authentication authentication){
+    @Transactional
+    public ResponseEntity<String> cardPayment(
+            @RequestBody CardPaymentDTO cardPaymentDTO){
 
-        Client client = cardService.getAuthenticatedClient(authentication.getName());
-        CardDTO card = cardService.cardDTOFindById(cardPaymentDTO.getCardPaymentId());
-        Account account = cardService.debitAccount(cardPaymentDTO.getNumber());
+        Card card = cardService.findCardByNumber(cardPaymentDTO.getNumber());
+        List<Account> accountList = card.getClient().getAccounts().stream().filter(account ->
+                                    account.getBalance() >= cardPaymentDTO.getAmount()).toList();
+        Account firstAccount = accountList.stream().findFirst().orElse(null);
 
         if (cardPaymentDTO.getNumber().isBlank()){
             return new ResponseEntity<>("You need to put a destination number account", HttpStatus.FORBIDDEN);
         }
         if (cardPaymentDTO.getCvv() < 100 && cardPaymentDTO.getCvv() > 999){
             return new ResponseEntity<>("cvv conteins more than 3 digits" ,HttpStatus.FORBIDDEN);
-        }
-        if(card.getCvv() != cardPaymentDTO.getCvv()){
-            return new ResponseEntity<>("The current cvv doesn't match" , HttpStatus.FORBIDDEN);
         }
         if(cardPaymentDTO.getAmount() <= 0){
             return new ResponseEntity<>("The amount has to be greater than 0" , HttpStatus.FORBIDDEN);
@@ -75,28 +74,28 @@ public class CardController {
         if(card.getToDate().isBefore(LocalDate.now())){
             return new ResponseEntity<>("This card is expired, please contact with the bank to get support" , HttpStatus.FORBIDDEN);
         }
-        if (account.getBalance() < cardPaymentDTO.getAmount()){
+        if (firstAccount.getBalance() < cardPaymentDTO.getAmount()){
             return new ResponseEntity<>("insufficient founds" , HttpStatus.FORBIDDEN);
         }
         //Se debe crear una transacción que indique el débito a una de las cuentas con la descripción de la operación
 
-        Transaction paymentTransaction = new Transaction(TransactionType.DEBIT, LocalDate.now(), cardPaymentDTO.getAmount(), cardPaymentDTO.getDescription());
-        double debitAccount = (account.getBalance() - cardPaymentDTO.getAmount());
+        Transaction paymentTransaction = new Transaction(TransactionType.DEBIT, LocalDate.now(), cardPaymentDTO.getAmount(),
+                                                        cardPaymentDTO.getDescription(), firstAccount.getBalance()  );
 
-        account.setBalance(debitAccount);
-        account.addTransaction(paymentTransaction);
+        double debitAccount = (firstAccount.getBalance() - cardPaymentDTO.getAmount());
+
+        firstAccount.setBalance(debitAccount);
+        firstAccount.addTransaction(paymentTransaction);
         cardService.saveTransaction(paymentTransaction);
+
+
+        return new ResponseEntity<>("Successful Payment", HttpStatus.CREATED);
     }
-
-
-
-
-
-
 
     @PatchMapping("/cards/{id}")
     public ResponseEntity<String> deleteCard(@PathVariable Long id,
                                              Authentication authentication){
+        System.out.println("holi");
         Client client = cardService.getAuthenticatedClient(authentication.getName());
         Card  card = cardService.foundCardById(id);
         boolean containsAcard = client.getCards().contains(card);

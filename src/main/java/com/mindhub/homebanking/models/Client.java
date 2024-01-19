@@ -23,6 +23,8 @@ public class Client {
     private List<Card> cards = new ArrayList<>();
     private String password;
     private boolean admin = false;
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType = RoleType.CLIENT;
 
 
     public Client() {
@@ -101,6 +103,14 @@ public class Client {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
     }
 
     public void addClientLoan(ClientLoan clientLoan){

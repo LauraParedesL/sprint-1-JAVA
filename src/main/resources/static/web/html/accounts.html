@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins&family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
 <body class="bg-[#FFFE91]">
@@ -33,7 +33,7 @@
     </div>
         <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="w-7 lg:h-10 flex items-center cursor-pointer">
     </header>
-    <main class="mx-3 bg-[#000000]">
+    <main class="mx-3 bg-gradient-to-r from-[#000000]  to-[#E6A51D]">
         <section class="bg-[#E6A51D]">
             <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png" alt="woman-withcreditcard">
             <div class="flex p-4 object-fit place-content-center bg-black">
@@ -67,11 +67,11 @@
         <section class=" flex justify-center m-10 flex-col" >
         <div class="flex flex-wrap w-full justify-center">
         <template v-if="accounts.length" v-for="account of accounts">
-            <div class="flex ">
-                <img src="../images/borrar.png" class="w-10 h-10 object-contain flex animate-bounce cursor-pointer"
-                    v-show="input" @click="deleteAccount(account.id)">
-            </div>
             <a v-bind:href="'../html/account.html?id='+account.id">
+                <div class="flex justify-center ">
+                    <img src="../images/borrar.png" class="w-10 h-10 object-contain flex animate-bounce cursor-pointer"
+                        v-show="input" @click="deleteAccount(account.id)">
+                </div>
                 <table class="place-items-center lg:w-[400px] h- bg-gradient-to-r from-[#000000]  to-[#3C3C3C] rounded-lg m-5 shadow-xl">
                     <tbody class="flex flex-col">
                         <tr class="border place-items-center place-content-center  flex flex-col">
@@ -104,21 +104,21 @@
             <h2 class="text-xl text-white font-bold font-lilita">My Loans</h2>
             <img class="w-8" src="../images/icons8-emoji-bolsa-de-dinero-48.png" alt="Baloon">
         </div>
-        <section class="bg-[#FFFE91] flex flex-col lg:flex-row justify-center">
+        <section class="flex flex-col lg:flex-row justify-center">
             <template v-if="loans.length > 0" v-for="loan of loans">
-                    <table class="place-items-center lg:w-96 lg:h-60 bg-gradient-to-r from-[#000000]  to-[#E6A51D] rounded-xl m-5 shadow-xl">
+                    <table class="place-items-center lg:w-96 lg:h-60 rounded-xl m-5 shadow-xl">
                         <tbody>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Type of Loan:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.name}}</td>
+                            <tr class=" divide-y-2 divide-gray ">
+                                <td class="border-collapse bg-[#FFFFFF] text-xl text-center p-1  font-bold font-['Poppins']">TYPE OF LOAN:</td>
+                                <td class="border-collapse bg-[#FFFFFF] text-lg text-center p-1 font-bold font-['Comfortaa']">{{loan.name}}</td>
                             </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Amount:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
+                            <tr class=" divide-y-2 divide-gray ">
+                                <td class="border-collapse bg-[#FFFFFF] text-xl text-center p-1 font-bold font-['Poppins']">AMOUNT:</td>
+                                <td class="border-collapse bg-[#FFFFFF] text-lg text-center p-1 font-bold font-['Comfortaa']">{{loan.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}}</td>
                             </tr>
-                            <tr>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">Payments:</td>
-                                <td class="p-4 text-xl text-white font-bold font-lilita">{{loan.payments}}</td>
+                            <tr class=" divide-y-2  divide-gray ">
+                                <td class="border-collapse bg-[#FFFFFF] text-xl text-center p-1 font-bold font-['Poppins']">PAYMENTS:</td>
+                                <td class="border-collapse bg-[#FFFFFF] text-lg rounded-full  text-center p-1 font-bold font-['Comfortaa']">{{loan.payments}}</td>
                             </tr>
                         </tbody>
                     </table>

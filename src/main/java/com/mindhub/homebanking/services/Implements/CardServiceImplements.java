@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.services.Implements;
 
 import com.mindhub.homebanking.dto.CardDTO;
+import com.mindhub.homebanking.dto.CardPaymentDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
@@ -41,8 +42,8 @@ public class CardServiceImplements implements CardService {
     }
 
     @Override
-    public CardDTO cardDTOFindById(Long id) {
-        return cardRepository.findById(id).map(CardDTO::new).orElse(null);
+    public Card findCardByNumber(String number) {
+        return cardRepository.findByNumber(number);
     }
 
     @Override
@@ -51,9 +52,8 @@ public class CardServiceImplements implements CardService {
     }
 
     @Override
-    public Transaction saveTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+    public void saveTransaction(Transaction transaction) {
+         transactionRepository.save(transaction);
     }
-
 
 }

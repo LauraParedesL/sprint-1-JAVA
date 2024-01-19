@@ -8,7 +8,8 @@ let app = createApp({
             accounts: [],
             id:1,
             transactions: [],
-            account: {}
+            account: {},
+            isMenuOpen: false
         }
     },
     created(){
@@ -38,6 +39,9 @@ let app = createApp({
                 window.location.href = "/web/html/index.html"
             })
             
+        },
+        ontoggleMenu(){
+            this.isMenuOpen = !this.isMenuOpen
         }
     }
 

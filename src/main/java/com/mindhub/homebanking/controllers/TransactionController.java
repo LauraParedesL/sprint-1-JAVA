@@ -68,8 +68,8 @@ public class TransactionController {
             return new ResponseEntity<>("insufficient funds", HttpStatus.FORBIDDEN);
         }
 
-        Transaction transaction1 = new Transaction(TransactionType.DEBIT, LocalDate.now(), -amount, description);
-        Transaction transaction2 = new Transaction(TransactionType.CREDIT, LocalDate.now(), amount, description);
+        Transaction transaction1 = new Transaction(TransactionType.DEBIT, LocalDate.now(), -amount, description, accountOrigin.getBalance());
+        Transaction transaction2 = new Transaction(TransactionType.CREDIT, LocalDate.now(), amount, description, accountDestination.getBalance());
 
         accountOrigin.addTransaction(transaction1);
         accountDestination.addTransaction(transaction2);
@@ -79,8 +79,6 @@ public class TransactionController {
         accountDestination.setBalance(accountDestination.getBalance() + amount);
         transactionService.saveAccounts(accountOrigin);
         transactionService.saveAccounts(accountDestination);
-
-
 
         return new ResponseEntity<>("Transaction done succesfully", HttpStatus.CREATED);
     }

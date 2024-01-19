@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dto.AccountDTO;
+import com.mindhub.homebanking.dto.CreationLoanDTO;
 import com.mindhub.homebanking.dto.LoanApplicationDTO;
 import com.mindhub.homebanking.dto.LoanDTO;
 import com.mindhub.homebanking.models.*;
@@ -17,6 +18,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.mindhub.homebanking.models.RoleType.ADMIN;
+
 @RestController
 @RequestMapping("/api")
 
@@ -29,7 +32,7 @@ public class LoanController {
     public ResponseEntity<Object> loanRequest(
             @RequestBody LoanApplicationDTO loanApplicationDTO,
                             Authentication authentication) {
-
+        Account destinationAccount = loanService.accountFindByNumber(loanApplicationDTO.getNumber());
         Loan loanSelected = loanService.getLoanById(loanApplicationDTO.getLoanId());
         Client client = loanService.getAuthenticatedClient(authentication.getName());
         LoanDTO loanDTO = loanService.loanDTOFindById(loanApplicationDTO.getLoanId());
@@ -65,11 +68,11 @@ public class LoanController {
             return new ResponseEntity<>("Error: Client already has this kind of loan" , HttpStatus.FORBIDDEN);
         }
 
-        ClientLoan clientLoan = new ClientLoan( loanApplicationDTO.getAmount() * 1.2 , loanApplicationDTO.getPayments() );
-        Transaction loanRequest = new Transaction(TransactionType.CREDIT, LocalDate.now(), loanApplicationDTO.getAmount(), loanDTO.getName() + " " + "loan approved");
+        ClientLoan clientLoan = new ClientLoan( loanApplicationDTO.getAmount() * loanDTO.getInterest() , loanApplicationDTO.getPayments() );
+        Transaction loanRequest = new Transaction(TransactionType.CREDIT, LocalDate.now(), loanApplicationDTO.getAmount(), loanDTO.getName() + " " + "loan approved", destinationAccount.getBalance());
 
         //Actualizar la cuenta destino sumando el monto solicitado
-        Account destinationAccount = loanService.accountFindByNumber(loanApplicationDTO.getNumber());
+
         double destinationAccountUpdated = (destinationAccount.getBalance() + loanApplicationDTO.getAmount());
         destinationAccount.setBalance(destinationAccountUpdated);
 
@@ -79,15 +82,42 @@ public class LoanController {
         loanSelected.addClientLoan(clientLoan);
         loanService.saveClientLoan(clientLoan);
 
-
-
         return new ResponseEntity<>("Loan successfully pre-approved", HttpStatus.CREATED);
-
     }
-
     @GetMapping("/loans")
     public List<LoanDTO> loanDTOList(){
         return loanService.loanList().stream().map(loan -> new LoanDTO(loan)).collect(Collectors.toList());
     }
+
+    @Transactional
+    @PostMapping("/loans/create")
+    public ResponseEntity<Object> createLoans( @RequestBody
+                                                CreationLoanDTO creationLoanDTO,
+                                               Authentication authentication){
+        Client client = loanService.getAuthenticatedClient(authentication.getName());
+        List<Integer> payments = creationLoanDTO.getPayments();
+
+        if (client.getRoleType() != ADMIN){
+            return new ResponseEntity<>("No eres administrador", HttpStatus.FORBIDDEN);
+        }
+        if (creationLoanDTO.getName().isBlank()){
+            return ResponseEntity.badRequest().body("El nombre no puede estar vacio");
+        }
+        if(creationLoanDTO.getInterest()==0){
+            return ResponseEntity.badRequest().body("El interes no puede ser 0");
+
+        }
+        if (creationLoanDTO.getMaxAmount()<0){
+            return ResponseEntity.badRequest().body("El monto maximo no puede ser 0");
+        }
+        if (payments.size() == 0){
+            return ResponseEntity.badRequest().body("Las cuotas no pueden ser menor a 0");
+        }
+        Loan newLoan = new Loan(creationLoanDTO.getName(), creationLoanDTO.getMaxAmount(), creationLoanDTO.getPayments(), creationLoanDTO.getInterest());
+        loanService.saveLoanSelected(newLoan);
+
+        return ResponseEntity.accepted().body("Prestamo creado con exito");
+    }
+
 
 }

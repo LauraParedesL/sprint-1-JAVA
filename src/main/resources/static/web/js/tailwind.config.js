@@ -10,7 +10,9 @@ module.exports = {
       'courier' : ['Courier-Prime'],
       'oxygen' : ['Oxygen'],
       'Michroma' : ['Michroma'],
-      'workSans' : ['Work-Sans']
+      'workSans' : ['Work-Sans'],
+      comfortaa: ['Comfortaa'],
+        poppins: ['Poppins']
     }
   }
 }

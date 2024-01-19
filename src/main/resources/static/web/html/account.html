@@ -46,6 +46,7 @@
                     <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">AMOUNT</th>
                     <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">DATE</th>
                     <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">DESCRIPTION</th>
+                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">BALANCE</th>
                 </tr>
             </thead>
             <template v-if="transactions.length" v-for="transaction of transactions">
@@ -56,6 +57,7 @@
                         <td class="border-collapse bg-[#FFFFFF] text-xs text-center p-1 text-black ">{{transaction.amount.toLocaleString('en-US', { style: 'currency', currency: 'USD'})}}</td>
                         <td class="border-collapse bg-[#FFFFFF]  text-xs text-center p-1 text-black">{{transaction.creationDate}}</td>
                         <td class="border-collapse bg-[#FFFFFF] text-xs text-center p-1 text-black">{{transaction.description}}</td>
+                        <td class="border-collapse bg-[#FFFFFF] text-xs text-center p-1 text-black">{{transaction.balance}}</td>
                     </tr>
                 </tbody>
             </template>

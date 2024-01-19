@@ -39,6 +39,8 @@ public class HomebankingApplication {
 
 			Client melba = new Client("MELBA" , "MOREL" , "melba@mindhub.com" , passwordEncoder.encode("000000"));
 			Client nikola = new Client("Nikola" , "Tesla" , "nikolatesla@mindhub.com" , passwordEncoder.encode("111111"));
+
+			nikola.setRoleType(RoleType.ADMIN);
 			clientRepository.save(melba);
 			clientRepository.save(nikola);
 			System.out.println(melba);
@@ -59,19 +61,19 @@ public class HomebankingApplication {
 			accountRepository.save(VIN003);
 			accountRepository.save(VIN004);
 
-			Transaction N1 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 1.200 , "salary");
-			Transaction N2 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 2.200 , "Kids");
-			Transaction N3 = new Transaction(TransactionType.DEBIT,  LocalDate.now() , -2.400 , "food");
-			Transaction N4 = new Transaction(TransactionType.DEBIT ,  LocalDate.now() , -8.50 , "nails");
+			Transaction N1 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 1.200 , "salary", 0);
+			Transaction N2 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 2.200 , "Kids", 0);
+			Transaction N3 = new Transaction(TransactionType.DEBIT,  LocalDate.now() , -2.400 , "food", 0);
+			Transaction N4 = new Transaction(TransactionType.DEBIT ,  LocalDate.now() , -8.50 , "nails", 0);
 			VIN001.addTransaction(N1);
 			VIN001.addTransaction(N3);
 			VIN002.addTransaction(N2);
 			VIN002.addTransaction(N4);
 
-			Transaction N5 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 4.500 , "cleaning service");
-			Transaction N6 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 1.200 , "discover good electricity");
-			Transaction N7 = new Transaction(TransactionType.DEBIT,  LocalDate.now() , -1.400 , "sickness");
-			Transaction N8 = new Transaction(TransactionType.DEBIT ,  LocalDate.now() , -3.500 , "mom");
+			Transaction N5 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 4.500 , "cleaning service", 0);
+			Transaction N6 = new Transaction(TransactionType.CREDIT ,  LocalDate.now() , 1.200 , "discover good electricity", 0);
+			Transaction N7 = new Transaction(TransactionType.DEBIT,  LocalDate.now() , -1.400 , "sickness", 0);
+			Transaction N8 = new Transaction(TransactionType.DEBIT ,  LocalDate.now() , -3.500 , "mom",0);
 			VIN003.addTransaction(N5);
 			VIN003.addTransaction(N7);
 			VIN004.addTransaction(N6);
@@ -86,9 +88,9 @@ public class HomebankingApplication {
 			transactionRepository.save(N7);
 			transactionRepository.save(N8);
 
-			Loan loan1 = new Loan("mortgage credit", 500000, List.of(12,24, 36, 48,60));
-			Loan loan2 = new Loan("personal credit", 100000, List.of(6,12,24));
-			Loan loan3 = new Loan("automotive credit", 300000, List.of(6,12,24,36));
+			Loan loan1 = new Loan("mortgage credit", 500.000, List.of(12,24, 36, 48,60), 1.20);
+			Loan loan2 = new Loan("personal credit", 100.000, List.of(6,12,24), 1.10);
+			Loan loan3 = new Loan("automotive credit", 300.000, List.of(6,12,24,36), 1.15);
 
 
 			loanRepository.save(loan1);

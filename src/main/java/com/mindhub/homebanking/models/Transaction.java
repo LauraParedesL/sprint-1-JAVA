@@ -17,14 +17,16 @@ public class Transaction {
     public String description;
     @ManyToOne
     private Account account;
+    private double balance;
 
     public Transaction (){}
 
-    public Transaction(TransactionType type, LocalDate creationDate, Double amount, String description) {
+    public Transaction(TransactionType type, LocalDate creationDate, Double amount, String description, double balance) {
         this.type = type;
         this.creationDate = creationDate;
         this.amount = amount;
         this.description = description;
+        this.balance = balance;
 
     }
 
@@ -80,6 +82,13 @@ public class Transaction {
         this.type = type;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
 
 
