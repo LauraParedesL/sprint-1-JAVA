@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap"
+    rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
 
@@ -56,14 +54,14 @@
                         a new card</a>
                 </div>
             </div>
-            <section class="bg-[#FFFE91] flex flex-wrap justify-center">
+            <section class="bg-[#E6A51D] flex flex-wrap justify-center">
                 <template v-if="debit.length > 0" v-for="card of debit" v-show="card">
                         <div v-if="card.color == 'GOLD'"
                             class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
                             <div class="flex w-full lg:space-x-64 space-x-36">
                                 <h2 class="text-lg lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
-                                <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
-                                    v-show="input" @click="deleteCard">
+                                <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer"
+                                    v-show="input" @click="deleteCard(card.id)">
                             </div>
                             <div class="flex pb-2">
                                 <img class="w-10" src="../images/chip.png" alt="chip">
@@ -86,7 +84,7 @@
                         <div class="flex w-full lg:space-x-64 space-x-36">
                             <h2 class="lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
                             <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer  "
-                                v-show="input">
+                                v-show="input" @click="deleteCard(card.id)">
                         </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
@@ -109,7 +107,7 @@
                         <div class="flex w-full lg:space-x-64 space-x-36">
                             <h2 class="lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
                             <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer  "
-                                v-show="input">
+                                v-show="input" @click="deleteCard(card.id)">
                         </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
@@ -134,7 +132,7 @@
                         <div class="flex w-full lg:space-x-64 space-x-36">
                             <h2 class="lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
                             <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
-                                v-show="input" @click="deleteCard">
+                                v-show="input" @click="deleteCard(card.id)">
                         </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
@@ -157,7 +155,7 @@
                         <div class="flex w-full lg:space-x-64 space-x-36">
                             <h2 class="lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
                             <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
-                                v-show="input">
+                                v-show="input" @click="deleteCard(card.id)">
                         </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
@@ -177,10 +175,10 @@
                     </div>
                     <div v-if="card.color == 'SILVER'"
                         class="place-items-center w-96 h-60 bg-gradient-to-r from-[#000000] via-[#E1E1E2] to-[#000000] rounded-xl m-5 shadow-xl p-2">
-                        <div class="flex w-full lg:space-x-64 space-x-36">
+                        <div class="flex w-full space-x-64">
                             <h2 class="lg:text-xl text-white font-bold italic">{{card.cardType}}</h2>
                             <img src="../images/borrar.png" class="w-10 object-contain flex animate-bounce cursor-pointer "
-                                v-show="input">
+                                v-show="input" @click="deleteCard(card.id)">
                         </div>
                         <div class="flex pb-2">
                             <img class="w-10" src="../images/chip.png" alt="chip">
@@ -271,7 +269,7 @@
             </div>
         </footer>
     </div>
-    <script src="tailwind.config.js"></script>
+    <script src="../js/tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../js/cards.js"></script>

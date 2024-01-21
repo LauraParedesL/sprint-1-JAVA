@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins&family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
 <body class="bg-[#FFFE91]">
@@ -19,23 +19,28 @@
             <h1 class="text-sm lg:text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
             </div>
             <div class="flex flex-row lg:w-3/4 lg:justify-end lg:gap-5 gap-2">
-            <a href="#" class="flex flex-row bg-[#E6A51D] p-1 rounded-lg items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal">
-                <h2 class="text-sm lg:text-xl text-white font-bold font-lilita">Log In</h2>
-                <img class="w-5 lg:w-10" src="../images/icons8-entrar-64.png" alt="login">
+            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-1 rounded-xl items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal">
+                <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Log In</h2>
+                <img class="w-5 lg:w-7" src="../images/icons8-entrar-64.png" alt="login">
             </a>
-            <a href="#" class="flex flex-row bg-[#E6A51D] p-1 rounded-lg items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal2">
-                <h2 class="text-sm lg:text-xl text-white font-bold font-lilita">Sign Up</h2>
-                <img class="w-5 lg:w-10" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
+            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-1 rounded-xl items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal2">
+                <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Sign Up</h2>
+                <img class="w-5 lg:w-7" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
             </a>
             </div>
         </header>
         <main class="mx-3 bg-gradient-to-r from-[#000000]  to-[#E6A51D]">
-            <section>
-                <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner.png"
-                    alt="woman-withcreditcard">
-                <div class="flex p-4 object-fit text-center place-content-center my-3">
-                    <h2 class="lg:text-xl text-black font-bold font-oxygen">Thinking about you, we have some recommendations</h2>
-                </div>
+          <!--  <section class="flex lg:justify-end justify-center w-full">
+                <article class="bg-no-repeat bg-cover min-h-[35vh] lg:min-h-[100vh] m-2  border-2 lg:min-w-[50vw] min-w-[65vw] " style="background-image: url('../images/Untitled\ design\ \(4\).png');">
+                
+                </article>
+            </section>-->
+            <section class="flex flex-wrap w-full mb-52 px-5" >
+                <h2 class="text-8xl p-7 flex self-center text-white font-bold font-['Poppins'] w-[50%]">Banking & Budgeting, made Simple.</h2>
+                <article class="flex lg:justify-end justify-center w-[50%]">
+                        <img class="lg:max-h-[100vh] object-contain min-h-[35vh]" src="../images/Untitled design (4).png" alt="cards">
+                </article>
+                <button  class=" bg-[#E6A51D] ml-48 p-2 rounded-2xl items-center font-['Comfortaa'] text-white text-2xl">Start Now</button>
             </section>
             <section class="flex flex-col lg:flex-row w-full justify-center py-5 ">
                 <article class="lg:w-[420px] bg-[#99D9EA] p-2 m-2 hover:bg-[#0094D1] hover:w-[450px]">
@@ -163,7 +168,7 @@
                 </section>
             </div>
     </div>
-    <script type="module" src="../js/tailwind.config.js"></script>
+    <script src="../js/tailwind.config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../js/data.js"></script>

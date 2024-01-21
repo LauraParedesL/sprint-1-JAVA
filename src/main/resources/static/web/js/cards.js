@@ -6,7 +6,7 @@ let app = createApp({
         return{
             data: [],
             accounts: [],
-            id:1,
+            id:0,
             loans: [],
             cards: [],
             debit: [],
@@ -47,9 +47,10 @@ let app = createApp({
             this.input=true
             this.selectButton=false
         },
-        deleteCard(){
-            axios.patch("/api/cards/" + this.id)
-            .then(response => { this.card=false
+        deleteCard(cardId){
+            axios.patch("/api/cards/" + cardId)
+            .then(response => { 
+                this.loadData()
                 console.log(response)
             }).catch(e => console.log(e))
         },

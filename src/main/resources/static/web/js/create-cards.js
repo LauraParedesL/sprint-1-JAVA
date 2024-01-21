@@ -17,7 +17,8 @@ let app = createApp({
        createCard(){
         axios.post("/api/clients/current/cards?cardType=" + this.type + "&color=" + this.color )
         .then(response =>
-            console.log(response))
+            console.log(response),
+            window.location.href = "/web/html/cards.html")
         .catch(error => 
             console.log(error))
        },
