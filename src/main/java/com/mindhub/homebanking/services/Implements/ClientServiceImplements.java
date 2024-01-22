@@ -1,7 +1,9 @@
 package com.mindhub.homebanking.services.Implements;
 
 import com.mindhub.homebanking.dto.ClientDTO;
+import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class ClientServiceImplements implements ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private AccountRepository accountRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
@@ -55,6 +59,8 @@ public class ClientServiceImplements implements ClientService {
     public void saveClient(Client client){
         clientRepository.save(client);
     }
+
+
 
 
 }

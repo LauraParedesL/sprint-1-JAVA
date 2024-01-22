@@ -58,6 +58,7 @@ public class AccountController {
         Account account = new Account(number, LocalDate.now(), 0D, accountType);
         client.addAccount(account);
         accountService.accountSave(account);
+
         return new ResponseEntity<>("Account created successfully", HttpStatus.CREATED);
 
     }

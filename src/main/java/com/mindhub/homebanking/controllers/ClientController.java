@@ -37,8 +37,8 @@ public class ClientController {
     @GetMapping("/current/accounts")
     public List<AccountDTO> getAccounts(Authentication authentication){
         List<Account> accountList = clientService.getAuthenticatedClient(authentication.getName()).getAccounts();
-        List<AccountDTO> listAccountDTO = accountList.stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
-        return listAccountDTO;
+        List<AccountDTO> accountDTO = accountList.stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
+        return accountDTO;
     }
         @Autowired
         private PasswordEncoder passwordEncoder;
@@ -54,18 +54,12 @@ public class ClientController {
 
 
             if (name.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
-
                 return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-
             }
-
 
             if (clientService.ClientExistsByEmail(email)) {
-
                 return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
-
             }
-
 
             clientService.saveClient(new Client(name, lastName, email, passwordEncoder.encode(password)));
 

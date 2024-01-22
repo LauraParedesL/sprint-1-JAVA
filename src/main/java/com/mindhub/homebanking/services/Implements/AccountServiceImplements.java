@@ -53,4 +53,8 @@ public class AccountServiceImplements implements AccountService {
     public void accountSave(Account account) {
         accountRepository.save(account);
     }
+    @Override
+    public void saveClient(Client client){
+        clientRepository.save(client);
+    }
 }
