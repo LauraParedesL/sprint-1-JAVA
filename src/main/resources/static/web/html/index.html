@@ -15,8 +15,8 @@
     <div id="app">
         <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row lg:space-x-32 items-center lg:p-8 mt-3 mx-3 pl-3 rounded-t-xl min-h-[10vh]  lg:gap-0 space-x-4">
             <div class="flex flex-row lg:w-56 gap-2">
-            <img class="w-5 object-contain lg:w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-            <h1 class="text-sm lg:text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
+            <img class="w-5 object-contain lg:w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            <h1 class="text-sm lg:text-3xl text-white font-bold font-['Poppins']">Baloon Inc</h1>
             </div>
             <div class="flex flex-row lg:w-3/4 lg:justify-end lg:gap-5 gap-2">
             <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-1 rounded-xl items-center hover:bg-black hover:rounded-xl" v-on:click="mostrarModal">
@@ -35,44 +35,66 @@
                 
                 </article>
             </section>-->
-            <section class="flex flex-wrap w-full mb-52 px-5" >
+            <section class="flex flex-wrap w-full mb-24 px-5" >
                 <h2 class="text-8xl p-7 flex self-center text-white font-bold font-['Poppins'] w-[50%]">Banking & Budgeting, made Simple.</h2>
                 <article class="flex lg:justify-end justify-center w-[50%]">
                         <img class="lg:max-h-[100vh] object-contain min-h-[35vh]" src="../images/Untitled design (4).png" alt="cards">
                 </article>
-                <button  class=" bg-[#E6A51D] ml-48 p-2 rounded-2xl items-center font-['Comfortaa'] text-white text-2xl">Start Now</button>
+                <button  class=" bg-[#E6A51D] ml-48 p-2 rounded-2xl items-center font-['Comfortaa'] text-white text-2xl animate-pulse" v-on:click="mostrarModal">Start Now</button>
             </section>
-            <section class="flex flex-col lg:flex-row w-full justify-center py-5 ">
-                <article class="lg:w-[420px] bg-[#99D9EA] p-2 m-2 hover:bg-[#0094D1] hover:w-[450px]">
-                    <img class="w-[420px]" src="../images/mama e hijo.png" alt="mom">
-                    <p class="font-['Oxygen'] p-1">it's Christmas!</p>
-                    <h3 class="text-2xl font-bold font-['Oxygen'] p-1">We'll have special schedule on christmas</h3>
-                    <p class="font-['Oxygen'] p-1">Don't leave for tomorrow whatever you have to do today</p>
-                    <div class="w-full flex justify-center">
-                        <button class="bg-black text-white p-1 rounded-2xl font-bold">see more</button>
+            <section class="w-full flex flex-col justify-center gap-4 mb-10">
+                <h2 class="font-['Poppins'] text-4xl text-center font-bold text-white ">Together, We Make It Happen</h2>
+                <p class="font-['Comfortaa'] text-xl text-center text-white">See how our clients help move our economy forward </p>
+            </section>
+            <section class="flex flex-row w-full justify-center gap-5">
+                <article class="bg-slate-400/20 w-44 h-44 rounded-lg flex flex-col content-center gap-2 p-4">
+                    <img class="w-16 place-self-center" src="../images/icons8-apretón-de-manos-64.png" alt="handshake">
+                    <p class="font-['Comfortaa'] text-center text-white">We provide effective solutions</p>
+                </article>
+                <article class="bg-slate-400/20 w-44 h-44 rounded-lg flex flex-col content-center gap-4 p-4">
+                    <img class="w-16 place-self-center" src="../images/icons8-cellphone-50.png" alt="handshake">
+                    <p class="font-['Comfortaa'] text-center text-white">Get our Website closer from you</p>
+                </article>
+                <article class="bg-slate-400/20 w-44 h-44 rounded-lg flex flex-col content-center gap-2 p-4">
+                    <img class="w-16 place-self-center" src="../images/icons8-banco-48.png" alt="handshake">
+                    <p class="font-['Comfortaa'] text-center text-white">Make your dreams come true with us</p>
+                </article>
+                <article class="bg-slate-400/20 w-44 h-44 rounded-lg flex flex-col content-center gap-4 p-4">
+                    <img class="w-16 place-self-center" src="../images/icons8-card-60.png" alt="handshake">
+                    <p class="font-['Comfortaa'] text-center text-white">Attractive interest rates</p>
+                </article>
+            </section>
+            <section class="flex flex-col w-full py-10 gap-3 ">
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 ml-10 flex gap-4">
+                    <img class="w-[500px]" src="../images/mama e hijo.png" alt="mom">
+                    <div class="w-full flex flex-col justify-center">
+                    <p class="font-['Oxygen'] p-1 text-xl">it's Christmas!</p>
+                    <h3 class="text-4xl font-bold font-['Poppins'] p-1">We'll have special schedule on christmas</h3>
+                    <p class="font-['Oxygen'] p-1 text-2xl">Don't leave for tomorrow whatever you have to do today</p>
+                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
-                <article class="lg:w-[420px] bg-[#688126] p-2 m-2 hover:bg-[#25D366] hover:w-[450px]">
-                    <img class="w-[420px]" src="../images/de compras.png" alt="mom">
-                    <p class="font-['Oxygen'] p-1">You are important for us</p>
-                    <h3 class="text-2xl font-bold font-['Oxygen'] p-1">$300 checking bonus on us</h3>
-                    <p class="font-['Oxygen'] p-1">Open an eligible checking account with qualifying electronic deposits</p>
-                    <div class="w-full flex justify-center">
-                        <button class="bg-black text-white p-1 rounded-2xl font-bold">see more</button>
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 mr-10 flex self-end gap-4">
+                    <div class="w-full flex flex-col justify-center">
+                        <p class="font-['Oxygen'] p-1 text-xl text-center">You are important for us</p>
+                        <h3 class="text-4xl font-bold font-['Poppins'] p-1 text-center">$300 checking bonus on us</h3>
+                        <p class="font-['Oxygen'] p-1 text-2xl text-center">Open an eligible checking account with qualifying electronic deposits</p>
+                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
+                    <img class="w-[500px]" src="../images/de compras.png" alt="mom">
                 </article>
-                <article class="lg:w-[420px] bg-[#E27B6D] p-2 m-2 hover:bg-[#FF0000] hover:w-[450px]">
-                    <img class="w-[420px]" src="../images/comiendo pizza.png" alt="mom">
-                    <p class="font-['Oxygen'] p-1">our bonus for you!</p>
-                    <h3 class="text-2xl font-bold font-['Oxygen'] p-1">Enjoy 0% intro APR for 21 months</h3>
-                    <p class="font-['Oxygen'] p-1">from account opening on purcharses and qualifying balance transfers. Terms apply.</p>
-                    <div class="w-full flex justify-center">
-                        <button class="bg-black text-white p-1 rounded-2xl font-bold">see more</button>
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 ml-10 flex gap-4">
+                        <img class="w-[500px]" src="../images/comiendo pizza.png" alt="mom">
+                    <div class="w-full flex flex-col justify-center">
+                        <p class="font-['Oxygen'] p-1 text-xl">our bonus for you!</p>
+                        <h3 class="text-4xl font-bold font-['Poppins'] p-1">Enjoy 0% intro APR for 21 months</h3>
+                        <p class="font-['Oxygen'] p-1 text-2xl">from account opening on purcharses and qualifying balance transfers. Terms apply.</p>
+                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
             </section>
             </main>
-            <footer class="mx-3 bg-[#E6A51D] p-4">
+            <footer class="mx-3 bg-[#E6A51D] p-4 flex space-x-56">
                 <div>
                     <div class="flex flex-col items-center justify-center">
                         <h3 class="font-semibold text-center text-sm text-black font-lilita">Follow Us</h3>
@@ -102,7 +124,7 @@
                     </div>
                 </div>
                 <div>
-                    <ul class="list-none leading-loose">
+                    <ul class="list-none leading-loose pb-3">
                         <li class="text-sm text-black font-lilita">About Us</li>
                         <li class="text-sm text-black font-lilita">Contact</li>
                         <li class="text-sm text-black font-lilita">History</li>
@@ -110,15 +132,15 @@
                     </ul>
                 </div>
                 <div>
-                    <ul class="list-none leading-loose">
-                        <li class="ftext-sm text-black font-lilita">Products</li>
+                    <ul class="list-none leading-loose pb-3">
+                        <li class="text-sm text-black font-lilita">Products</li>
                         <li class="text-sm text-black font-lilita">Your Account</li>
                         <li class="text-sm text-black font-lilita">Loans</li>
                         <li class="text-sm text-black font-lilita">Type of cards</li>
                     </ul>
                 </div>
                 <div>
-                    <ul class="list-none leading-loose">
+                    <ul class="list-none leading-loose pb-3">
                         <li class="text-sm text-black font-lilita">Services</li>
                         <li class="text-sm text-black font-lilita">Insurances</li>
                         <li class="text-sm text-black font-lilita">Pymes</li>
@@ -139,30 +161,33 @@
             </footer>
             </footer>
             <div v-show='modal' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
-                <section class="lg:w-96 lg:h-96 bg-[#FFFE91] absolute rounded-xl p-3 lg:p-0">
+                <section class="lg:w-96 lg:h-96 bg-[#FFFFFF] absolute rounded-xl p-3 lg:p-0">
                     <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal">X</button>
                     <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
                         <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-                        <h2 class="text-2xl text-black font-bold font-sans">WELCOME!</h2>
-                        <input class="w-72 p-2 rounded-lg" type="text" id="email" name="email" placeholder="user@example.com" v-model="email">
-                        <input class="w-72 p-2 rounded-lg" type="password" id="password" name="password" placeholder="password" v-model="password">
+                        <h2 class="text-3xl text-black font-bold font-['Poppins']">WELCOME!</h2>
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="text" id="email" name="email" placeholder="user@example.com" v-model="email">
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="password" id="password" name="password" placeholder="password" v-model="password">
                         <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="login()">Log In</button>
+                    <div>
+                        <p class="font-['Comfortaa'] text-sm">Don't have an account?</p>
+                        <p class="font-['Comfortaa'] text-sm hover:underline hover:text-lg hover:font-bold cursor-pointer text-center" v-on:click="mostrarModal2">Create one here</p>
+                    </div>
                     </div>
                      <!--  <h3 v-else>an error has ocurred, try it again</h3> -->
                 </section>
             </div>
             <div v-show='modal2' class="w-full bg-slate-400/40 h-screen fixed inset-0 z-10 flex justify-center items-center">
-                <section class="lg:w-96 lg:h-3/4 bg-[#FFFE91] absolute rounded-xl p-3 lg:p-0">
+                <section class="lg:w-96 lg:h-3/4 bg-[#FFFFFF] absolute rounded-xl p-3 lg:p-0">
                     <button  class="text-Black font-bold p-1 m-1 absolute top-1 right-1 rounded-lg" v-on:click="cerrarModal2">X</button>
-                    <div class="flex flex-col w-full h-full items-center gap-5 place-content-center" @submit.prevent>
+                    <div class="flex flex-col w-full h-full items-center gap-3 place-content-center" @submit.prevent>
                         <img class="w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-                        <h2 class="text-2xl text-black font-bold font-sans">WELCOME!</h2>
-                        <input class="w-72 p-2 rounded-lg" type="text" id="firstName" name="firstName" placeholder="First Name" v-model="name">
-                        <input class="w-72 p-2 rounded-lg" type="lastName" id="lastName" name="lastName" placeholder="LastName" v-model="lastName">
-                        <input class="w-72 p-2 rounded-lg" type="text" id="emailsg" name="email" placeholder="user@example.com" v-model="email">
-                        <input class="w-72 p-2 rounded-lg" type="password" id="passwordsg" name="password" placeholder="password" v-model="password">
+                        <h2 class="text-2xl text-black font-bold font-['Poppins']">WELCOME!</h2>
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="text" id="firstName" name="firstName" placeholder="First Name" v-model="name">
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="lastName" id="lastName" name="lastName" placeholder="LastName" v-model="lastName">
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="text" id="emailsg" name="email" placeholder="user@example.com" v-model="email">
+                        <input class="w-72 p-2 rounded-lg border-2 shadow-lg" type="password" id="passwordsg" name="password" placeholder="password" v-model="password">
                         <button class=" bg-[#E6A51D] text-white font-bold  p-1 m-1 shadow-lg hover:bg-black rounded-lg" @click="signUp">Sign Up</button>
-
                     </div>
                      <!--  <h3 v-else>an error has ocurred, try it again</h3> -->
                 </section>
