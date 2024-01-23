@@ -9,7 +9,7 @@ let app = createApp({
             id:1,
             transactions: [],
             account: {},
-            isMenuOpen: false
+            isMenuOpen: true
         }
     },
     created(){

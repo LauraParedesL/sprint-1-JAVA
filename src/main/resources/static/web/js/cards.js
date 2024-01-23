@@ -14,7 +14,7 @@ let app = createApp({
             input: false,
             selectButton: true,
             card:true,
-            isMenuOpen: false
+            isMenuOpen: true
         }
     },
     created(){

@@ -13,7 +13,7 @@ let app = createApp({
             loans:[],
             selectedAccount: 0,
             selectedPayments: 0,
-            isMenuOpen: false
+            isMenuOpen: true
            
         }
     },

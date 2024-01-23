@@ -7,54 +7,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins&family=Courier+Prime&family=Lilita+One&family=Michroma&family=Oxygen&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Baloon Inc</title>
 </head>
-
 <body class="bg-[#FFFE91]">
     <div id="app">
         <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row lg:space-x-32 items-center lg:p-8 mt-3 mx-3 pl-3 rounded-t-xl min-h-[10vh] gap-4 lg:gap-0 space-x-28 ">
-            <div class="flex flex-row lg:w-56 gap-2">
-            <img class="w-5 object-contain lg:w-10" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-            <h1 class="text-lg lg:text-3xl text-white font-bold font-lilita">Baloon Inc</h1>
+            <div class="flex flex-row lg:w-72 gap-2">
+                <img class="w-5 object-contain lg:w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+                <h1 class="text-sm lg:text-3xl text-white font-bold font-['Poppins']">Baloon Inc</h1>
             </div>
-            <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex lg: bg-[#000000] mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-40 text-center lg:w-5/6">
+            <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex  bg-[#000000] lg:bg-inherit mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-36 text-center lg:">
                 <nav class="flex lg:flex-row gap-3 lg:gap-12 flex-col">
-                <a class="lg:text-xl text-white font-bold font-lilita hover:bg-[#E6A51D] hover:rounded-lg hover:p-1" href="../html/index.html">Home</a>
-                <a class="lg:text-xl text-white font-bold font-lilita lg:gap-3 hover:bg-[#E6A51D] hover:rounded-lg hover:p-1" href="#">My Accounts</a>
-                <a class="lg:text-xl text-white font-bold font-lilita hover:bg-[#E6A51D] hover:rounded-lg hover:p-1" href="../html/cards.html">My Cards</a>
-                <a class="lg:text-xl text-white font-bold font-lilita hover:bg-[#E6A51D] hover:rounded-lg hover:p-1" href="../html/transfers.html">Transfers</a>
-                <a class="lg:text-xl text-white font-bold font-lilita hover:bg-[#E6A51D] hover:rounded-lg hover:p-1" href="#">Loans</a>
+                <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/index.html">HOME</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="#">ACCOUNTS</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/cards.html">CARDS</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/transfers.html">TRANSFERS</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="#">LOANS</a>
             </nav>
-            <div @click="logout" class="flex flex-row justify-center bg-[#E6A51D] rounded-xl mt-5 p-1 lg:mt-0 items-center lg:w-32 lg:justify-end cursor-pointer">
-                <h2 class="text-lg lg:text-xl text-white font-bold font-lilita">Logout</h2>
-                <img class="w-5 lg:w-10" src="../images/icons8-salida-64.png" alt="logout">
+            <div @click="logout" class="flex flex-row justify-center border-2 hover:bg-[#000000]  rounded-xl mt-5 p-1 lg:mt-0 items-center  lg:justify-end cursor-pointer">
+                <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Logout</h2>
+                <img class="w-5 lg:w-7" src="../images/icons8-salida-64.png" alt="logout">
             </div>
         </div>
-            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="w-7 lg:h-10 flex items-center cursor-pointer">
+            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="lg:hidden w-7 lg:h-10 flex items-center cursor-pointer">
         </header>
-        <main class="mx-3">
-            <section class="bg-[#E6A51D]">
+        <main class="mx-3 bg-gradient-to-r from-[#000000]  to-[#E6A51D]">
+            <section>
                 <img class=" w-full h-60 object-fill" src="../images/Yellow Monochrome Photo LinkedIn Banner (1).png"
                     alt="woman-withcreditcard">
-                <div class="flex p-4 object-fit place-content-center">
-                    <h2 class="text-xl text-white font-bold font-['Courier_Prime']">Welcome Back!</h2>
-                    <img class="w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
-                </div>
             </section>
             <div class="flex flex-col p-4 gap-3 object-fit place-content-center bg-[#000000]">
                 <div class="w-full flex justify-center ">
-                    <h2 class=" text-2xl text-white font-bold font-lilita ">My cards</h2>
+                    <h2 class=" text-xl text-white font-bold font-['Poppins'] ">MY CARDS</h2>
                     <img class="w-8" src="../images/icons8-emoji-de-tarjeta-de-crédito-48.png" alt="Baloon">
                 </div>
-                <div v-if="cards.length < 6" class="w-full flex justify-center">
-                    <a href="../html/create-cards.html"
-                        class="text-white font-bold w-36 p-1 text-lg bg-[#E6A51D] rounded-xl flex animate-pulse justify-center">Get
-                        a new card</a>
-                </div>
             </div>
-            <section class="bg-[#E6A51D] flex flex-wrap justify-center">
+            <div v-if="cards.length < 6" class="w-full my-6 flex justify-center">
+                <a href="../html/create-cards.html" class="text-white font-bold font-['Comfortaa'] w-48 text-3xl text-center p-2 border-2 bg-slate-400/20 rounded-xl flex animate-pulse justify-center">Get a new card</a>
+            </div>
+            <section class="flex flex-wrap justify-center">
                 <template v-if="debit.length > 0" v-for="card of debit" v-show="card">
                         <div v-if="card.color == 'GOLD'"
                             class="place-items-center w-96 h-60 bg-gradient-to-r from-[#D6B45D] via-[#EDD78F] to-[#D6B45D] rounded-xl m-5 shadow-xl p-2">
@@ -203,7 +195,7 @@
                 </div>
             </section>
         </main>
-        <footer class="mx-3 bg-[#E6A51D] p-4">
+        <footer class="mx-3 bg-[#E6A51D] p-4 flex flex-col lg:flex-row lg:space-x-56">
             <div>
                 <div class="flex flex-col items-center justify-center">
                     <h3 class="font-semibold text-center text-sm text-black font-lilita">Follow Us</h3>
@@ -233,7 +225,7 @@
                 </div>
             </div>
             <div>
-                <ul class="list-none leading-loose">
+                <ul class="list-none leading-loose pb-3">
                     <li class="text-sm text-black font-lilita">About Us</li>
                     <li class="text-sm text-black font-lilita">Contact</li>
                     <li class="text-sm text-black font-lilita">History</li>
@@ -241,15 +233,15 @@
                 </ul>
             </div>
             <div>
-                <ul class="list-none leading-loose">
-                    <li class="ftext-sm text-black font-lilita">Products</li>
+                <ul class="list-none leading-loose pb-3">
+                    <li class="text-sm text-black font-lilita">Products</li>
                     <li class="text-sm text-black font-lilita">Your Account</li>
                     <li class="text-sm text-black font-lilita">Loans</li>
                     <li class="text-sm text-black font-lilita">Type of cards</li>
                 </ul>
             </div>
             <div>
-                <ul class="list-none leading-loose">
+                <ul class="list-none leading-loose pb-3">
                     <li class="text-sm text-black font-lilita">Services</li>
                     <li class="text-sm text-black font-lilita">Insurances</li>
                     <li class="text-sm text-black font-lilita">Pymes</li>

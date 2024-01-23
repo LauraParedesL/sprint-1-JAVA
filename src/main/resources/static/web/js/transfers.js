@@ -11,7 +11,7 @@ let app = createApp({
             description: "",
             amount: 0,
             e : "",
-            isMenuOpen: false
+            isMenuOpen: true
            
         }
     },

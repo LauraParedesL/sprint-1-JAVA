@@ -13,7 +13,7 @@ let app = createApp({
             modal: false,
             savings: "",
             current:"",
-            isMenuOpen: false
+            isMenuOpen: true
             
         }
     },
