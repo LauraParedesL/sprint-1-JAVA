@@ -24,12 +24,14 @@ public class HomebankingApplication {
 	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
 
 	@Bean
+
 	public CommandLineRunner initData (ClientRepository clientRepository,
 									   AccountRepository accountRepository,
 									   TransactionRepository transactionRepository,
 									   LoanRepository loanRepository,
 									   ClientLoanRepository clientLoanRepository,
 									   CardRepository cardRepository){
+
 		return args -> {
 
 			Client melba = new Client("Melba" , "Morel" , "melba@mindhub.com");
@@ -109,6 +111,7 @@ public class HomebankingApplication {
 			clientLoanRepository.save(melbasSelfLoan);
 			clientLoanRepository.save(nikolaSelfLoan);
 			clientLoanRepository.save(nikolasAutomotive);
+
 
 			Card debitGold = new Card(CardType.DEBIT, "1234-567-890-000", 567, LocalDate.now(), LocalDate.of(2028,12,14), CardColor.GOLD);
 			Card creditTitanium = new Card(CardType.CREDIT, "000-567-890-000", 765, LocalDate.now(), LocalDate.now().plusYears(5), CardColor.TITANIUM);

@@ -19,8 +19,12 @@ public class Client {
 
     @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
     private Set<ClientLoan> clientLoans = new HashSet<>();
+
     @OneToMany(mappedBy = "client" , fetch = FetchType.EAGER)
     private List<Card> cards = new ArrayList<>();
+
+
+
 
 
     public Client() {
@@ -99,6 +103,7 @@ public class Client {
     public void addCard(Card card){
         card.setClient(this);
         this.cards.add(card);
+
     }
 
     @Override
