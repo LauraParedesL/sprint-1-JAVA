@@ -23,9 +23,9 @@ public class HomebankingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
-/*
-	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
 
+	//aqui pondremos instrucciones que queremos que se ejecuten cuando la aplicacion arranque
+/*
 	@Autowired
 	public PasswordEncoder passwordEncoder;
 	@Bean
@@ -88,19 +88,19 @@ public class HomebankingApplication {
 			transactionRepository.save(N7);
 			transactionRepository.save(N8);
 
-			Loan loan1 = new Loan("mortgage credit", 500.000, List.of(12,24, 36, 48,60), 1.20);
-			Loan loan2 = new Loan("personal credit", 100.000, List.of(6,12,24), 1.10);
-			Loan loan3 = new Loan("automotive credit", 300.000, List.of(6,12,24,36), 1.15);
+			Loan loan1 = new Loan("mortgage credit", 500000., List.of(12,24, 36, 48,60), 1.20);
+			Loan loan2 = new Loan("personal credit", 100000., List.of(6,12,24), 1.10);
+			Loan loan3 = new Loan("automotive credit", 300000., List.of(6,12,24,36), 1.15);
 
 
 			loanRepository.save(loan1);
 			loanRepository.save(loan2);
 			loanRepository.save(loan3);
 
-			ClientLoan melbasMortgage = new ClientLoan(400.000, 60);
-			ClientLoan melbasSelfLoan = new ClientLoan(50.000, 12);
-			ClientLoan nikolaSelfLoan = new ClientLoan(100.000, 24);
-			ClientLoan nikolasAutomotive= new ClientLoan(200.000, 36);
+			ClientLoan melbasMortgage = new ClientLoan(400000.00, 60);
+			ClientLoan melbasSelfLoan = new ClientLoan(50000.00, 12);
+			ClientLoan nikolaSelfLoan = new ClientLoan(100000.00, 24);
+			ClientLoan nikolasAutomotive= new ClientLoan(200000.00, 36);
 
 			loan1.addClientLoan(melbasMortgage);
 			loan2.addClientLoan(melbasSelfLoan);

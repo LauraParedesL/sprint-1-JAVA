@@ -98,25 +98,25 @@ public class LoanController {
         List<Integer> payments = creationLoanDTO.getPayments();
 
         if (client.getRoleType() != ADMIN){
-            return new ResponseEntity<>("No eres administrador", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("You are not allowed to do this action", HttpStatus.FORBIDDEN);
         }
         if (creationLoanDTO.getName().isBlank()){
-            return ResponseEntity.badRequest().body("El nombre no puede estar vacio");
+            return ResponseEntity.badRequest().body("Please provide data");
         }
         if(creationLoanDTO.getInterest()==0){
-            return ResponseEntity.badRequest().body("El interes no puede ser 0");
+            return ResponseEntity.badRequest().body("interest can´t be less or equal to 0");
 
         }
         if (creationLoanDTO.getMaxAmount()<0){
-            return ResponseEntity.badRequest().body("El monto maximo no puede ser 0");
+            return ResponseEntity.badRequest().body("the max amount can't be equal to 0");
         }
         if (payments.size() == 0){
-            return ResponseEntity.badRequest().body("Las cuotas no pueden ser menor a 0");
+            return ResponseEntity.badRequest().body("payments can't be equal to 0");
         }
         Loan newLoan = new Loan(creationLoanDTO.getName(), creationLoanDTO.getMaxAmount(), creationLoanDTO.getPayments(), creationLoanDTO.getInterest());
         loanService.saveLoanSelected(newLoan);
 
-        return ResponseEntity.accepted().body("Prestamo creado con exito");
+        return ResponseEntity.accepted().body("created successful");
     }
 
 
