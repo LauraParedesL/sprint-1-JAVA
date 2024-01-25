@@ -18,7 +18,7 @@
                 <img class="w-5 object-contain lg:w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
                 <h1 class="text-sm lg:text-3xl text-white font-bold font-['Poppins']">Baloon Inc</h1>
             </div>
-            <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex  bg-[#000000] lg:bg-inherit mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-36 text-center lg:">
+            <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex  bg-[#000000] lg:bg-inherit mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-36 text-center">
                 <nav class="flex lg:flex-row gap-3 lg:gap-12 flex-col">
                 <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/index.html">HOME</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/accounts.html">ACCOUNTS</a>
@@ -44,11 +44,11 @@
         <table class="lg:m-3 lg:h-32 my-5">
             <thead>
                 <tr>
-                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">TYPE</th>
-                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">AMOUNT</th>
-                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">DATE</th>
-                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">DESCRIPTION</th>
-                    <th class="border-collapse bg-[#FFFFFF] p-2 lg:w-36 text-black text-sm">BALANCE</th>
+                    <th class="border-collapse bg-[#FFFFFF] lg:p-2 lg:w-36 text-black lg:text-sm text-xs">TYPE</th>
+                    <th class="border-collapse bg-[#FFFFFF] lg:p-2 lg:w-36 text-black lg:text-sm text-xs">AMOUNT</th>
+                    <th class="border-collapse bg-[#FFFFFF] lg:p-2 lg:w-36 text-black lg:text-sm text-xs">DATE</th>
+                    <th class="border-collapse bg-[#FFFFFF] lg:p-2 pr-1 lg:pr-0 lg:w-36 text-black lg:text-sm text-xs">DESCRIPTION</th>
+                    <th class="border-collapse bg-[#FFFFFF] lg:p-2 lg:w-36 text-black lg:text-sm text-xs">BALANCE</th>
                 </tr>
             </thead>
             <template v-if="transactions.length" v-for="transaction of transactions">

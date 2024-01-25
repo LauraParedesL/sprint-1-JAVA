@@ -13,35 +13,35 @@
 </head>
 <body class="bg-[#FFFE91]">
     <div id="app">
-        <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row lg:space-x-32 items-center lg:p-8 mt-3 mx-3 pl-3 rounded-t-xl min-h-[10vh]  lg:gap-0 space-x-4">
+        <header class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] flex flex-row place-content-between lg:space-x-32 items-center lg:p-8 mt-3 mx-3 px-2 rounded-t-xl min-h-[10vh] lg:gap-0">
             <div class="flex flex-row lg:w-56 gap-2">
-            <img class="w-5 object-contain lg:w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
+            <img class="w-4 object-contain lg:w-8" src="../images/icons8-elemento-aire-32.png" alt="Baloon">
             <h1 class="text-sm lg:text-3xl text-white font-bold font-['Poppins']">Baloon Inc</h1>
             </div>
             <div class="flex flex-row lg:w-3/4 lg:justify-end lg:gap-5 gap-2">
-            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-2 rounded-xl items-center hover:bg-black hover:rounded-xl hover:animate-pulse" v-on:click="mostrarModal">
-                <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Log In</h2>
-                <img class="w-5 lg:w-7" src="../images/icons8-entrar-64.png" alt="login">
+            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-1 rounded-xl items-center hover:bg-black hover:rounded-xl hover:animate-pulse" v-on:click="mostrarModal">
+                <h2 class="text-xs lg:text-xl text-white font-bold font-['Comfortaa']">Log In</h2>
+                <img class="w-4 lg:w-7" src="../images/icons8-entrar-64.png" alt="login">
             </a>
-            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-2 rounded-xl items-center hover:bg-black hover:rounded-xl hover:animate-pulse" v-on:click="mostrarModal2">
-                <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Sign Up</h2>
-                <img class="w-5 lg:w-7" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
+            <a href="#" class="flex flex-row gap-1 bg-[#221E1F] p-1 rounded-xl items-center hover:bg-black hover:rounded-xl hover:animate-pulse" v-on:click="mostrarModal2">
+                <h2 class="text-xs lg:text-xl text-white font-bold font-['Comfortaa']">Sign Up</h2>
+                <img class="w-4 lg:w-7" src="../images/icons8-añadir-usuario-masculino-48.png" alt="sign-Up">
             </a>
             </div>
         </header>
         <main class="mx-3 bg-gradient-to-r from-[#000000]  to-[#E6A51D]">
-            <section class="flex flex-wrap w-full mb-24 px-5" >
-                <h2 class="text-8xl p-7 flex self-center text-white font-bold font-['Poppins'] w-[50%]">Banking & Budgeting, made Simple.</h2>
+            <section class="flex flex-wrap w-full lg:mb-24 mb-12 lg:px-5 px-1" >
+                <h2 class="lg:text-8xl text-3xl lg:p-7 p-4 flex self-center text-white font-bold font-['Poppins'] w-[50%]">Banking & Budgeting, made Simple.</h2>
                 <article class="flex lg:justify-end justify-center w-[50%]">
-                        <img class="lg:max-h-[100vh] object-contain min-h-[35vh]" src="../images/Untitled design (4).png" alt="cards">
+                        <img class="lg:max-h-[100vh] pt-28 lg:pt-0 object-contain lg:min-h-[35vh]" src="../images/Untitled design (4).png" alt="cards">
                 </article>
-                <button  class=" bg-[#E6A51D] ml-48 p-2 rounded-2xl items-center font-['Comfortaa'] text-white text-2xl animate-pulse" v-on:click="mostrarModal">Start Now</button>
+                <button  class=" bg-[#E6A51D] lg:ml-48 py-1 px-2 ml-4 rounded-2xl items-center font-['Comfortaa'] text-white lg:text-2xl animate-pulse" v-on:click="mostrarModal">Start Now</button>
             </section>
             <section class="w-full flex flex-col justify-center gap-4 mb-10">
-                <h2 class="font-['Poppins'] text-4xl text-center font-bold text-white ">Together, We Make It Happen</h2>
+                <h2 class="font-['Poppins'] lg:text-4xl text-3xl text-center font-bold text-white ">Together, We Make It Happen</h2>
                 <p class="font-['Comfortaa'] text-xl text-center text-white">See how our clients help move our economy forward </p>
             </section>
-            <section class="flex flex-row w-full justify-center gap-5">
+            <section class="flex flex-col lg:flex-row w-full place-items-center lg:justify-center gap-5">
                 <article class="bg-slate-400/20 w-44 h-44 rounded-lg flex flex-col content-center gap-2 p-4">
                     <img class="w-16 place-self-center" src="../images/icons8-apretón-de-manos-64.png" alt="handshake">
                     <p class="font-['Comfortaa'] text-center text-white">We provide effective solutions</p>
@@ -60,36 +60,36 @@
                 </article>
             </section>
             <section class="flex flex-col w-full py-10 gap-3 ">
-                <article class="lg:w-[900px] bg-slate-400/20 p-3 ml-10 flex gap-4">
-                    <img class="w-[500px]" src="../images/mama e hijo.png" alt="mom">
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 lg:ml-10 flex flex-col lg:flex-row gap-4">
+                    <img class="lg:w-[500px]" src="../images/mama e hijo.png" alt="mom">
                     <div class="w-full flex flex-col justify-center">
                     <p class="font-['Oxygen'] p-1 text-xl">it's Christmas!</p>
                     <h3 class="text-4xl font-bold font-['Poppins'] p-1">We'll have special schedule on christmas</h3>
                     <p class="font-['Oxygen'] p-1 text-2xl">Don't leave for tomorrow whatever you have to do today</p>
-                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
+                        <button class="bg-black w-24 lg:mt-16 mt-4 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
-                <article class="lg:w-[900px] bg-slate-400/20 p-3 mr-10 flex self-end gap-4">
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 lg:mr-10 flex flex-col-reverse lg:flex-row self-end gap-4">
                     <div class="w-full flex flex-col justify-center">
                         <p class="font-['Oxygen'] p-1 text-xl text-center">You are important for us</p>
                         <h3 class="text-4xl font-bold font-['Poppins'] p-1 text-center">$300 checking bonus on us</h3>
                         <p class="font-['Oxygen'] p-1 text-2xl text-center">Open an eligible checking account with qualifying electronic deposits</p>
-                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
+                        <button class="bg-black w-24 lg:mt-16 mt-4 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
-                    <img class="w-[500px]" src="../images/de compras.png" alt="mom">
+                    <img class="lg:w-[500px]" src="../images/de compras.png" alt="mom">
                 </article>
-                <article class="lg:w-[900px] bg-slate-400/20 p-3 ml-10 flex gap-4">
-                        <img class="w-[500px]" src="../images/comiendo pizza.png" alt="mom">
+                <article class="lg:w-[900px] bg-slate-400/20 p-3 lg:ml-10 flex flex-col lg:flex-row gap-4">
+                        <img class="lg:w-[500px]" src="../images/comiendo pizza.png" alt="mom">
                     <div class="w-full flex flex-col justify-center">
                         <p class="font-['Oxygen'] p-1 text-xl">our bonus for you!</p>
                         <h3 class="text-4xl font-bold font-['Poppins'] p-1">Enjoy 0% intro APR for 21 months</h3>
                         <p class="font-['Oxygen'] p-1 text-2xl">from account opening on purcharses and qualifying balance transfers. Terms apply.</p>
-                        <button class="bg-black w-24 mt-16 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
+                        <button class="bg-black w-24 lg:mt-16 mt-4 place-self-center text-white p-1 rounded-2xl font-bold">see more</button>
                     </div>
                 </article>
             </section>
             </main>
-            <footer class="mx-3 bg-[#E6A51D] p-4 flex space-x-56">
+            <footer class="mx-3 bg-[#E6A51D] p-4 flex flex-col lg:flex-row lg:space-x-56">
                 <div>
                     <div class="flex flex-col items-center justify-center">
                         <h3 class="font-semibold text-center text-sm text-black font-lilita">Follow Us</h3>
