@@ -20,18 +20,18 @@
             </div>
             <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex  bg-[#000000] lg:bg-inherit mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-36 text-center lg:">
                 <nav class="flex lg:flex-row gap-3 lg:gap-12 flex-col">
-                <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/index.html">HOME</a>
-                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="#">ACCOUNTS</a>
+                <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/accounts.html">HOME</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/accounts.html">ACCOUNTS</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/cards.html">CARDS</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/transfers.html">TRANSFERS</a>
-                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="#">LOANS</a>
+                <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/transfers.html">LOANS</a>
             </nav>
             <div @click="logout" class="flex flex-row justify-center border-2 hover:bg-[#000000]  rounded-xl mt-5 p-1 lg:mt-0 items-center  lg:justify-end cursor-pointer">
                 <h2 class="text-sm lg:text-xl text-white font-bold font-['Comfortaa']">Logout</h2>
                 <img class="w-5 lg:w-7" src="../images/icons8-salida-64.png" alt="logout">
             </div>
         </div>
-            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="lg:hidden w-7 lg:h-10 flex items-center cursor-pointer">
+            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="lg:hidden w-7 lg:h-10 flex items-center cursor-pointer animate-bounce">
         </header>
     <main class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] mx-3">
         <section class="w-full flex justify-center">

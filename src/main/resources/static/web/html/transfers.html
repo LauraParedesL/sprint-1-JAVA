@@ -20,7 +20,7 @@
             </div>
             <div v-if="isMenuOpen" @click="ontoggleMenu"  class="absolute lg:items-center lg:inline-flex  bg-[#000000] lg:bg-inherit mx-3 p-3 min-h-[50vh] lg:min-h-[10vh] right-0 top-[12%] lg:rounded-xl w-full lg:static lg:gap-36 text-center lg:">
                 <nav class="flex lg:flex-row gap-3 lg:gap-12 flex-col">
-                <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/index.html">HOME</a>
+                <a class="lg:text-lg text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/accounts.html">HOME</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/accounts.html">ACCOUNTS</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="../html/cards.html">CARDS</a>
                 <a class="lg:text-xl text-white hover:font-bold hover:animate-pulse font-['Comfortaa'] hover:bg-[#000000] hover:rounded-lg hover:p-1" href="#">TRANSFERS</a>
@@ -31,7 +31,7 @@
                 <img class="w-5 lg:w-7" src="../images/icons8-salida-64.png" alt="logout">
             </div>
         </div>
-            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="lg:hidden w-7 lg:h-10 flex items-center cursor-pointer">
+            <img src="../images/icons8-menú-48.png" @click="ontoggleMenu" class="lg:hidden w-7 lg:h-10 flex items-center cursor-pointer animate-bounce">
         </header>
     <main class="bg-gradient-to-r from-[#000000]  to-[#E6A51D] mx-3">
         <section class="w-full flex justify-center">
@@ -49,7 +49,10 @@
                     <option v-for="account in accounts" v-bind:value="account.number" required>{{account.number}} $ {{account.balance}}</option>
                 </select>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="destinationAccount">Destination Account</label>
-                <input v-model="destinationAccount" class="p-1 text-[#000000] rounded-lg" type="text" id="destinationAccount" name="destinationAccount" placeholder="XXXX-XXXX-XXXX" required>
+                <select v-model="destinationAccount" class="p-1 text-[#000000] rounded-lg" id="destinationAccount" name="destinationAccount">
+                    <option value="">select type</option>
+                    <option v-for="account in accounts" v-bind:value="account.number" required>{{account.number}}</option>
+                </select>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="amount">Amount</label>
                 <input v-model="amount" class="p-1 text-[#000000] rounded-lg" type="text" id="amount" name="amount" required>
                 <label class="text-white font-['Oxygen'] font-bold text-lg" for="description">Description</label>
